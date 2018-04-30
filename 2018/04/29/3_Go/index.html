@@ -144,24 +144,25 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="前言:配置go语言的环境 Linux: Windows:  关于环境配置的思考:安装Go,需要配置所谓的环境变量 第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改 第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录. 第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不">
+<meta name="keywords" content="Go,BlockChain">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/04/28/hello-world/index.html">
+<meta property="og:title" content="3_GO语言学习">
+<meta property="og:url" content="http://yoursite.com/2018/04/29/3_Go/index.html">
 <meta property="og:site_name" content="Rickeey&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="前言:配置go语言的环境 Linux: Windows:  关于环境配置的思考:安装Go,需要配置所谓的环境变量 第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改 第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录. 第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-28T14:05:00.729Z">
+<meta property="og:updated_time" content="2018-04-30T06:09:10.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="3_GO语言学习">
+<meta name="twitter:description" content="前言:配置go语言的环境 Linux: Windows:  关于环境配置的思考:安装Go,需要配置所谓的环境变量 第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改 第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录. 第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/28/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/29/3_Go/"/>
 
 
 
@@ -171,7 +172,7 @@
   };
 </script>
 
-  <title>Hello World | Rickeey's Blog</title>
+  <title>3_GO语言学习 | Rickeey's Blog</title>
   
 
 
@@ -335,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/28/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/29/3_Go/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="星星周">
@@ -352,7 +353,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">3_GO语言学习
               
             
           </h1>
@@ -377,12 +378,46 @@
                 
               
 
-              <time title="Created: 2018-04-28 22:05:00" itemprop="dateCreated datePublished" datetime="2018-04-28T22:05:00+08:00">2018-04-28</time>
+              <time title="Created: 2018-04-29 14:00:00" itemprop="dateCreated datePublished" datetime="2018-04-29T14:00:00+08:00">2018-04-29</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-04-30 14:09:10" itemprop="dateModified" datetime="2018-04-30T14:09:10+08:00">2018-04-30</time>
+              
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -411,15 +446,50 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="前言-配置go语言的环境"><a href="#前言-配置go语言的环境" class="headerlink" title="前言:配置go语言的环境"></a>前言:配置go语言的环境</h1><ul>
+<li>Linux:</li>
+<li><p>Windows: </p>
+<pre><code>关于环境配置的思考:安装Go,需要配置所谓的环境变量
+第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改
+第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录.
+第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不懂什么是环境变量.PATH的命令是全局命令,你在系统的任何地方,输入对象的命令,都有效.
+</code></pre></li>
+</ul>
+<p>#1.基本语法</p>
+<h2 id="创建于声明"><a href="#创建于声明" class="headerlink" title=". 创建于声明"></a><1>. 创建于声明</1></h2><pre><code>*变量的声明 
+ 整形:
+ 数组:
+ 切片:
+ 结构体:
+ 接口:
+ 通道:      
+*类型的声明
+ 结构体:
+ 接口:
+</code></pre><p>   注:给类型起别名:而且用<strong>别名</strong>的类型和用<strong>原始名字</strong>的类型是完全不同的,不能通用</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title=".数据类型"></a><2>.数据类型</2></h2><h3 id="1-值类型"><a href="#1-值类型" class="headerlink" title="(1).值类型"></a>(1).值类型</h3><pre><code>整形,浮点型,字符串,数组,函数,结构体
+</code></pre><h3 id="2-引用类型"><a href="#2-引用类型" class="headerlink" title="(2).引用类型"></a>(2).引用类型</h3><pre><code>切片,映射,接口,通道
+</code></pre><p>关于数据类型的角度,在程序中所有一切的对象都是数据类型,所谓的类型也是结构体类型的数据.通过结构体去定义类型.<br>你有没有发现该所有的结构体对象,他们的数据类型就是自己定义的结构体类型;小学生王二狗的类型就是学生.<br>所以我们发现结构体就是类型的始祖,它定义了一个类型的属性和方法.方法就定义了该类型能做什么,比如int能作<br>加减运算.属性是对类型的描述,一般是用基本类型去描述复杂类型.<br>所有东西都是类型.类型的<strong>对象</strong>有两种使用方式:值类型, 引用类型<br>值类型的数据: 1 就是 1.站在数据对象的层面,所指就是具体的内存空间中存放的值,<br>引用类型的数据: 通过记录数据对象的内存地址,通过地址去访问数据,达到在不同内存空间,不同权限的地方,通过地址修改同一个或者说特定的对象</p>
+<h2 id="容器"><a href="#容器" class="headerlink" title=".容器"></a><3>.容器</3></h2><pre><code>- 通道:引用类型,对非缓存通道读写都会堵塞,为什么说是对通道的读写,因为都是其他对象调用读写函数,向通道操作. 缓存通道,只会在缓存满员才会产生向通道写操作堵塞.
+- 数组:定长 值类型
+- 切片:可变长度 引用类型 
+- 映射:无序储存 引用类型,
+</code></pre><p>都是的用于储存数据.储存数据的容器也是一种数据类型.</p>
+<h2 id="并发与通道"><a href="#并发与通道" class="headerlink" title=".并发与通道"></a><4>.并发与通道</4></h2><pre><code>- 并发和并行
+- 子协程Goroutin
+- 程序的运行
+</code></pre><p>#2. 结构体和接口</p>
+<ul>
+<li>结构体: 值类型, 包含了各种属性,自身本没实体,意义在于创建的该结构体类型的对象 .<br>可以将结构体理解成,具体的数据类型(比如说整形int)之上的一种抽象的存在形式</li>
+<li>接口:和结构体一样,自身本没实体,只是对具体方法实现的归纳.有实体的是实现了给接口方法的实现类对象.<br>也是一种抽象形式.它是对方法的描述.<br>空接口:没有任何方法,所以任何类型的数据,或者说任何类型的对象都实现了空接口,当函数的接收参数类型是空接口时,任何类型都能向函数中传递.<br>#3.包的使用</li>
+<li>fmt</li>
+<li>io</li>
+<li>time</li>
+<li>strings</li>
+<li>sync:它提供了基本的同步原语。在多个goroutine访问共享资源的时候，需要使用sync中提供的锁机制</li>
+<li>net</li>
+<li>strconv:本包提供字符串与基本数据类型互转的能力</li>
+</ul>
 
       
     </div>
@@ -438,6 +508,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Go/" rel="tag"># Go</a>
+          
+            <a href="/tags/BlockChain/" rel="tag"># BlockChain</a>
+          
+        </div>
+      
 
       
       
@@ -453,8 +531,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/29/2-BlogCreate/" rel="prev" title="2_Hexo框架博客搭建-Github同步部署">
-                2_Hexo框架博客搭建-Github同步部署 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/29/2_Hexo_BlogCreate/" rel="prev" title="2.Hexo_博客搭建-Github同步部署">
+                2.Hexo_博客搭建-Github同步部署 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -533,7 +611,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -550,7 +628,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -577,7 +657,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -637,7 +721,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言-配置go语言的环境"><span class="nav-number">1.</span> <span class="nav-text">前言:配置go语言的环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建于声明"><span class="nav-number">1.1.</span> <span class="nav-text">. 创建于声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">.数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-值类型"><span class="nav-number">1.2.1.</span> <span class="nav-text">(1).值类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-引用类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">(2).引用类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器"><span class="nav-number">1.3.</span> <span class="nav-text">.容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发与通道"><span class="nav-number">1.4.</span> <span class="nav-text">.并发与通道</span></a></li></ol></li></ol></div>
             
 
           </div>

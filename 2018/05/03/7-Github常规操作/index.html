@@ -144,25 +144,28 @@
 
 
 
-  <meta name="description" content="前言:配置go语言的环境 Linux: Windows:  关于环境配置的思考:安装Go,需要配置所谓的环境变量 第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改 第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录. 第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不">
-<meta name="keywords" content="Go,BlockChain">
+  <meta name="description" content="本地代码上传及报错git fatal: 拒绝合并无关历史第一步: 建立git仓库cd你要上传的项目根目录1git init 第二步: 将项目中的文件add到仓库缓存1git add . // 这是添加目录下所有文件 特定某个文件add 文件名 第三步: 将缓存的文件提交到仓库中1git commit -m &amp;quot;备注你想说的话&amp;quot; 第四步: 去github创建新的Repository">
+<meta name="keywords" content="Github,效率">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.GO语言学习">
-<meta property="og:url" content="http://yoursite.com/2018/04/29/3_Go/index.html">
+<meta property="og:title" content="7.本地代码上传Github">
+<meta property="og:url" content="http://yoursite.com/2018/05/03/7-Github常规操作/index.html">
 <meta property="og:site_name" content="Rickeey&#39;s Blog">
-<meta property="og:description" content="前言:配置go语言的环境 Linux: Windows:  关于环境配置的思考:安装Go,需要配置所谓的环境变量 第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改 第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录. 第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不">
+<meta property="og:description" content="本地代码上传及报错git fatal: 拒绝合并无关历史第一步: 建立git仓库cd你要上传的项目根目录1git init 第二步: 将项目中的文件add到仓库缓存1git add . // 这是添加目录下所有文件 特定某个文件add 文件名 第三步: 将缓存的文件提交到仓库中1git commit -m &amp;quot;备注你想说的话&amp;quot; 第四步: 去github创建新的Repository">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-03T04:08:11.287Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10649797-05069d8f3f77ec02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10649797-07d9b526607245c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-03T15:29:16.433Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3.GO语言学习">
-<meta name="twitter:description" content="前言:配置go语言的环境 Linux: Windows:  关于环境配置的思考:安装Go,需要配置所谓的环境变量 第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改 第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录. 第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不">
+<meta name="twitter:title" content="7.本地代码上传Github">
+<meta name="twitter:description" content="本地代码上传及报错git fatal: 拒绝合并无关历史第一步: 建立git仓库cd你要上传的项目根目录1git init 第二步: 将项目中的文件add到仓库缓存1git add . // 这是添加目录下所有文件 特定某个文件add 文件名 第三步: 将缓存的文件提交到仓库中1git commit -m &amp;quot;备注你想说的话&amp;quot; 第四步: 去github创建新的Repository">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/10649797-05069d8f3f77ec02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/29/3_Go/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/03/7-Github常规操作/"/>
 
 
 
@@ -172,7 +175,7 @@
   };
 </script>
 
-  <title>3.GO语言学习 | Rickeey's Blog</title>
+  <title>7.本地代码上传Github | Rickeey's Blog</title>
   
 
 
@@ -336,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/29/3_Go/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/7-Github常规操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="星星周">
@@ -353,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">3.GO语言学习
+          <h1 class="post-title" itemprop="name headline">7.本地代码上传Github
               
             
           </h1>
@@ -378,24 +381,12 @@
                 
               
 
-              <time title="Created: 2018-04-29 14:00:00" itemprop="dateCreated datePublished" datetime="2018-04-29T14:00:00+08:00">2018-04-29</time>
+              <time title="Created: 2018-05-03 22:56:19 / Modified: 23:29:16" itemprop="dateCreated datePublished" datetime="2018-05-03T22:56:19+08:00">2018-05-03</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-05-03 12:08:11" itemprop="dateModified" datetime="2018-05-03T12:08:11+08:00">2018-05-03</time>
               
             
           </span>
@@ -412,7 +403,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Github入门/" itemprop="url" rel="index"><span itemprop="name">Github入门</span></a></span>
 
                 
                 
@@ -427,8 +418,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/29/3_Go/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/29/3_Go/" itemprop="commentsCount"></span>
+                <a href="/2018/05/03/7-Github常规操作/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/03/7-Github常规操作/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -456,48 +447,19 @@
       
 
       
-        <h1 id="前言-配置go语言的环境"><a href="#前言-配置go语言的环境" class="headerlink" title="前言:配置go语言的环境"></a>前言:配置go语言的环境</h1><ul>
-<li>Linux:</li>
-<li><p>Windows: </p>
-<pre><code>关于环境配置的思考:安装Go,需要配置所谓的环境变量
-第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改
-第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录.
-第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不懂什么是环境变量.PATH的命令是全局命令,你在系统的任何地方,输入对象的命令,都有效.
-</code></pre></li>
-</ul>
-<h1 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1.基本语法"></a>1.基本语法</h1><h2 id="创建于声明"><a href="#创建于声明" class="headerlink" title=". 创建于声明"></a><1>. 创建于声明</1></h2><pre><code>*变量的声明 
- 整形:
- 数组:
- 切片:
- 结构体:
- 接口:
- 通道:      
-*类型的声明
- 结构体:
- 接口:
-</code></pre><p>   注:给类型起别名:而且用<strong>别名</strong>的类型和用<strong>原始名字</strong>的类型是完全不同的,不能通用</p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title=".数据类型"></a><2>.数据类型</2></h2><h3 id="1-值类型"><a href="#1-值类型" class="headerlink" title="(1).值类型"></a>(1).值类型</h3><pre><code>整形,浮点型,字符串,数组,函数,结构体
-</code></pre><h3 id="2-引用类型"><a href="#2-引用类型" class="headerlink" title="(2).引用类型"></a>(2).引用类型</h3><pre><code>切片,映射,接口,通道
-</code></pre><p>关于数据类型的角度,在程序中所有一切的对象都是数据类型,所谓的类型也是结构体类型的数据.通过结构体去定义类型.<br>你有没有发现该所有的结构体对象,他们的数据类型就是自己定义的结构体类型;小学生王二狗的类型就是学生.<br>所以我们发现结构体就是类型的始祖,它定义了一个类型的属性和方法.方法就定义了该类型能做什么,比如int能作<br>加减运算.属性是对类型的描述,一般是用基本类型去描述复杂类型.<br>所有东西都是类型.类型的<strong>对象</strong>有两种使用方式:值类型, 引用类型<br>值类型的数据: 1 就是 1.站在数据对象的层面,所指就是具体的内存空间中存放的值,<br>引用类型的数据: 通过记录数据对象的内存地址,通过地址去访问数据,达到在不同内存空间,不同权限的地方,通过地址修改同一个或者说特定的对象</p>
-<h2 id="容器"><a href="#容器" class="headerlink" title=".容器"></a><3>.容器</3></h2><pre><code>- 通道:引用类型,对非缓存通道读写都会堵塞,为什么说是对通道的读写,因为都是其他对象调用读写函数,向通道操作. 缓存通道,只会在缓存满员才会产生向通道写操作堵塞.
-- 数组:定长 值类型
-- 切片:可变长度 引用类型 
-- 映射:无序储存 引用类型,
-</code></pre><p>都是的用于储存数据.储存数据的容器也是一种数据类型.</p>
-<h2 id="并发与通道"><a href="#并发与通道" class="headerlink" title=".并发与通道"></a><4>.并发与通道</4></h2><pre><code>- 并发和并行
-- 子协程Goroutin
-- 程序的运行
-</code></pre><h1 id="2-结构体和接口"><a href="#2-结构体和接口" class="headerlink" title="2. 结构体和接口"></a>2. 结构体和接口</h1><ul>
-<li>结构体: 值类型, 包含了各种属性,自身本没实体,意义在于创建的该结构体类型的对象 .<br>可以将结构体理解成,具体的数据类型(比如说整形int)之上的一种抽象的存在形式</li>
-<li>接口:和结构体一样,自身本没实体,只是对具体方法实现的归纳.有实体的是实现了给接口方法的实现类对象.<br>也是一种抽象形式.它是对方法的描述.<br>空接口:没有任何方法,所以任何类型的数据,或者说任何类型的对象都实现了空接口,当函数的接收参数类型是空接口时,任何类型都能向函数中传递. <h1 id="3-包的使用"><a href="#3-包的使用" class="headerlink" title="3.包的使用"></a>3.包的使用</h1></li>
-<li>fmt</li>
-<li>io</li>
-<li>time</li>
-<li>strings</li>
-<li>sync:它提供了基本的同步原语。在多个goroutine访问共享资源的时候，需要使用sync中提供的锁机制</li>
-<li>net</li>
-<li>strconv:本包提供字符串与基本数据类型互转的能力</li>
-</ul>
+        <h1 id="本地代码上传及报错git-fatal-拒绝合并无关历史"><a href="#本地代码上传及报错git-fatal-拒绝合并无关历史" class="headerlink" title="本地代码上传及报错git fatal: 拒绝合并无关历史"></a>本地代码上传及报错<code>git fatal: 拒绝合并无关历史</code></h1><h2 id="第一步-建立git仓库"><a href="#第一步-建立git仓库" class="headerlink" title="第一步: 建立git仓库"></a>第一步: 建立git仓库</h2><p>cd你要上传的项目根目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></p>
+<h2 id="第二步-将项目中的文件add到仓库缓存"><a href="#第二步-将项目中的文件add到仓库缓存" class="headerlink" title="第二步: 将项目中的文件add到仓库缓存"></a>第二步: 将项目中的文件add到仓库缓存</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add . // 这是添加目录下所有文件</span><br></pre></td></tr></table></figure>
+<p>特定某个文件<code>add 文件名</code></p>
+<h2 id="第三步-将缓存的文件提交到仓库中"><a href="#第三步-将缓存的文件提交到仓库中" class="headerlink" title="第三步: 将缓存的文件提交到仓库中"></a>第三步: 将缓存的文件提交到仓库中</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;备注你想说的话&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="第四步-去github创建新的Repository"><a href="#第四步-去github创建新的Repository" class="headerlink" title="第四步: 去github创建新的Repository"></a>第四步: 去github创建新的Repository</h2><p><img src="https://upload-images.jianshu.io/upload_images/10649797-05069d8f3f77ec02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>**点击<code>Creat repository</code>,进入下图界面,拷贝新建仓库的地址,红框所示<br><img src="https://upload-images.jianshu.io/upload_images/10649797-07d9b526607245c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="第五步-重点-将本地的仓库关联Github"><a href="#第五步-重点-将本地的仓库关联Github" class="headerlink" title="第五步: 重点!!将本地的仓库关联Github"></a>第五步: 重点!!将本地的仓库关联Github</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/RickeeyZhou/anything-is-ok-and-please-English-</span><br></pre></td></tr></table></figure>
+<p>地址用你上一步拷贝的</p>
+<h2 id="第六步-上传之前-先pull-保证本地仓库已经同步远端仓库"><a href="#第六步-上传之前-先pull-保证本地仓库已经同步远端仓库" class="headerlink" title="第六步: 上传之前,先pull,保证本地仓库已经同步远端仓库"></a>第六步: 上传之前,先pull,保证本地仓库已经同步远端仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
+<p><strong>请一定要加<code>--allow-unrelated-histories</code>, 否则会出现<code>拒绝合并</code>的错误</strong><br>会出现以下信息:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git # 请输入一个提交信息以解释此合并的必要性，尤其是将一个更新后的上游分支 # 合并到主题分支</span><br></pre></td></tr></table></figure></p>
+<p>在空白处直接输入任意字符, <code>crtrl + X</code>保存退出</p>
+<h2 id="第七步-最后一步"><a href="#第七步-最后一步" class="headerlink" title="第七步: 最后一步"></a>第七步: 最后一步</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>如果没有异常, 会提示你输入你github 的Username和Password</p>
 
       
     </div>
@@ -518,9 +480,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Go/" rel="tag"># Go</a>
+            <a href="/tags/Github/" rel="tag"># Github</a>
           
-            <a href="/tags/BlockChain/" rel="tag"># BlockChain</a>
+            <a href="/tags/效率/" rel="tag"># 效率</a>
           
         </div>
       
@@ -533,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/09/1_hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/05/03/6-Hexo博客细节优化/" rel="next" title="6.Hexo博客细节优化">
+                <i class="fa fa-chevron-left"></i> 6.Hexo博客细节优化
               </a>
             
           </div>
@@ -542,10 +504,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/29/2_Hexo_BlogCreate/" rel="prev" title="2.Hexo_博客搭建-Github同步部署">
-                2.Hexo_博客搭建-Github同步部署 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -744,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言-配置go语言的环境"><span class="nav-number">1.</span> <span class="nav-text">前言:配置go语言的环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基本语法"><span class="nav-number">2.</span> <span class="nav-text">1.基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建于声明"><span class="nav-number">2.1.</span> <span class="nav-text">. 创建于声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.2.</span> <span class="nav-text">.数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-值类型"><span class="nav-number">2.2.1.</span> <span class="nav-text">(1).值类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-引用类型"><span class="nav-number">2.2.2.</span> <span class="nav-text">(2).引用类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器"><span class="nav-number">2.3.</span> <span class="nav-text">.容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发与通道"><span class="nav-number">2.4.</span> <span class="nav-text">.并发与通道</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-结构体和接口"><span class="nav-number">3.</span> <span class="nav-text">2. 结构体和接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-包的使用"><span class="nav-number">4.</span> <span class="nav-text">3.包的使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本地代码上传及报错git-fatal-拒绝合并无关历史"><span class="nav-number">1.</span> <span class="nav-text">本地代码上传及报错git fatal: 拒绝合并无关历史</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步-建立git仓库"><span class="nav-number">1.1.</span> <span class="nav-text">第一步: 建立git仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步-将项目中的文件add到仓库缓存"><span class="nav-number">1.2.</span> <span class="nav-text">第二步: 将项目中的文件add到仓库缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步-将缓存的文件提交到仓库中"><span class="nav-number">1.3.</span> <span class="nav-text">第三步: 将缓存的文件提交到仓库中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四步-去github创建新的Repository"><span class="nav-number">1.4.</span> <span class="nav-text">第四步: 去github创建新的Repository</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五步-重点-将本地的仓库关联Github"><span class="nav-number">1.5.</span> <span class="nav-text">第五步: 重点!!将本地的仓库关联Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六步-上传之前-先pull-保证本地仓库已经同步远端仓库"><span class="nav-number">1.6.</span> <span class="nav-text">第六步: 上传之前,先pull,保证本地仓库已经同步远端仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七步-最后一步"><span class="nav-number">1.7.</span> <span class="nav-text">第七步: 最后一步</span></a></li></ol></li></ol></div>
             
 
           </div>

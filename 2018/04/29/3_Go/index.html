@@ -147,14 +147,14 @@
   <meta name="description" content="前言:配置go语言的环境 Linux: Windows:  关于环境配置的思考:安装Go,需要配置所谓的环境变量 第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改 第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录. 第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不">
 <meta name="keywords" content="Go,BlockChain">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3_GO语言学习">
+<meta property="og:title" content="3.GO语言学习">
 <meta property="og:url" content="http://yoursite.com/2018/04/29/3_Go/index.html">
 <meta property="og:site_name" content="Rickeey&#39;s Blog">
 <meta property="og:description" content="前言:配置go语言的环境 Linux: Windows:  关于环境配置的思考:安装Go,需要配置所谓的环境变量 第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改 第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录. 第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-30T06:09:10.816Z">
+<meta property="og:updated_time" content="2018-05-03T04:08:11.287Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3_GO语言学习">
+<meta name="twitter:title" content="3.GO语言学习">
 <meta name="twitter:description" content="前言:配置go语言的环境 Linux: Windows:  关于环境配置的思考:安装Go,需要配置所谓的环境变量 第一个:goroot是指go的语言环境的安装目录,一般自动安装好了,不需要改 第二个:gopath是指go的工程目录,相当于c中的workspace工作空间,需要自己创建,目录下有src,pkg,bin三个子目录. 第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不">
 
 
@@ -172,7 +172,7 @@
   };
 </script>
 
-  <title>3_GO语言学习 | Rickeey's Blog</title>
+  <title>3.GO语言学习 | Rickeey's Blog</title>
   
 
 
@@ -353,7 +353,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">3_GO语言学习
+          <h1 class="post-title" itemprop="name headline">3.GO语言学习
               
             
           </h1>
@@ -395,7 +395,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-04-30 14:09:10" itemprop="dateModified" datetime="2018-04-30T14:09:10+08:00">2018-04-30</time>
+                <time title="Modified: 2018-05-03 12:08:11" itemprop="dateModified" datetime="2018-05-03T12:08:11+08:00">2018-05-03</time>
               
             
           </span>
@@ -465,8 +465,7 @@
 第三个:panth将go的命令放入系统的环境变量目录下,作为小白根本不懂什么是环境变量.PATH的命令是全局命令,你在系统的任何地方,输入对象的命令,都有效.
 </code></pre></li>
 </ul>
-<p>#1.基本语法</p>
-<h2 id="创建于声明"><a href="#创建于声明" class="headerlink" title=". 创建于声明"></a><1>. 创建于声明</1></h2><pre><code>*变量的声明 
+<h1 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1.基本语法"></a>1.基本语法</h1><h2 id="创建于声明"><a href="#创建于声明" class="headerlink" title=". 创建于声明"></a><1>. 创建于声明</1></h2><pre><code>*变量的声明 
  整形:
  数组:
  切片:
@@ -488,10 +487,9 @@
 <h2 id="并发与通道"><a href="#并发与通道" class="headerlink" title=".并发与通道"></a><4>.并发与通道</4></h2><pre><code>- 并发和并行
 - 子协程Goroutin
 - 程序的运行
-</code></pre><p>#2. 结构体和接口</p>
-<ul>
+</code></pre><h1 id="2-结构体和接口"><a href="#2-结构体和接口" class="headerlink" title="2. 结构体和接口"></a>2. 结构体和接口</h1><ul>
 <li>结构体: 值类型, 包含了各种属性,自身本没实体,意义在于创建的该结构体类型的对象 .<br>可以将结构体理解成,具体的数据类型(比如说整形int)之上的一种抽象的存在形式</li>
-<li>接口:和结构体一样,自身本没实体,只是对具体方法实现的归纳.有实体的是实现了给接口方法的实现类对象.<br>也是一种抽象形式.它是对方法的描述.<br>空接口:没有任何方法,所以任何类型的数据,或者说任何类型的对象都实现了空接口,当函数的接收参数类型是空接口时,任何类型都能向函数中传递.<br>#3.包的使用</li>
+<li>接口:和结构体一样,自身本没实体,只是对具体方法实现的归纳.有实体的是实现了给接口方法的实现类对象.<br>也是一种抽象形式.它是对方法的描述.<br>空接口:没有任何方法,所以任何类型的数据,或者说任何类型的对象都实现了空接口,当函数的接收参数类型是空接口时,任何类型都能向函数中传递. <h1 id="3-包的使用"><a href="#3-包的使用" class="headerlink" title="3.包的使用"></a>3.包的使用</h1></li>
 <li>fmt</li>
 <li>io</li>
 <li>time</li>
@@ -742,7 +740,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言-配置go语言的环境"><span class="nav-number">1.</span> <span class="nav-text">前言:配置go语言的环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建于声明"><span class="nav-number">1.1.</span> <span class="nav-text">. 创建于声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">.数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-值类型"><span class="nav-number">1.2.1.</span> <span class="nav-text">(1).值类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-引用类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">(2).引用类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器"><span class="nav-number">1.3.</span> <span class="nav-text">.容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发与通道"><span class="nav-number">1.4.</span> <span class="nav-text">.并发与通道</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言-配置go语言的环境"><span class="nav-number">1.</span> <span class="nav-text">前言:配置go语言的环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基本语法"><span class="nav-number">2.</span> <span class="nav-text">1.基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建于声明"><span class="nav-number">2.1.</span> <span class="nav-text">. 创建于声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.2.</span> <span class="nav-text">.数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-值类型"><span class="nav-number">2.2.1.</span> <span class="nav-text">(1).值类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-引用类型"><span class="nav-number">2.2.2.</span> <span class="nav-text">(2).引用类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器"><span class="nav-number">2.3.</span> <span class="nav-text">.容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发与通道"><span class="nav-number">2.4.</span> <span class="nav-text">.并发与通道</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-结构体和接口"><span class="nav-number">3.</span> <span class="nav-text">2. 结构体和接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-包的使用"><span class="nav-number">4.</span> <span class="nav-text">3.包的使用</span></a></li></ol></div>
             
 
           </div>

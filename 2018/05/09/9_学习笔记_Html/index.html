@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|18:300,300italic,400,400italic,700,700italic|Permanent Marker:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=6.2.0" color="#222">
+
+
+  <link rel="manifest" href="/favicon.ico">
+
+
+  <meta name="msapplication-config" content="/favicon.ico" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前端的架构组成  HTML 网页的骨架, 掌握着web的框架  CSS  网页的外貌,样式; 图片, 视频什么的  JavaS 网页的灵魂, 控制行为, 控制着网页对数据的反应 ​ HTML 是一种标签语言  本文是根据阮一峰老师的HTML学习笔记, 摘录而成   块级元素div含义: 页面内容的独立组成部分  划分网页布局 ​ 1&amp;lt;div id=&quot;header&quot;&amp;gt; 页面的头部&amp;lt;">
+<meta name="keywords" content="Html 前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习笔记_Html">
+<meta property="og:url" content="http://yoursite.com/2018/05/09/9_学习笔记_Html/index.html">
+<meta property="og:site_name" content="Rickeey&#39;s Blog">
+<meta property="og:description" content="前端的架构组成  HTML 网页的骨架, 掌握着web的框架  CSS  网页的外貌,样式; 图片, 视频什么的  JavaS 网页的灵魂, 控制行为, 控制着网页对数据的反应 ​ HTML 是一种标签语言  本文是根据阮一峰老师的HTML学习笔记, 摘录而成   块级元素div含义: 页面内容的独立组成部分  划分网页布局 ​ 1&amp;lt;div id=&quot;header&quot;&amp;gt; 页面的头部&amp;lt;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-09T15:21:18.510Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习笔记_Html">
+<meta name="twitter:description" content="前端的架构组成  HTML 网页的骨架, 掌握着web的框架  CSS  网页的外貌,样式; 图片, 视频什么的  JavaS 网页的灵魂, 控制行为, 控制着网页对数据的反应 ​ HTML 是一种标签语言  本文是根据阮一峰老师的HTML学习笔记, 摘录而成   块级元素div含义: 页面内容的独立组成部分  划分网页布局 ​ 1&amp;lt;div id=&quot;header&quot;&amp;gt; 页面的头部&amp;lt;">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/09/9_学习笔记_Html/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>学习笔记_Html | Rickeey's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rickeey's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tages/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/09/9_学习笔记_Html/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="星星周">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Ricky.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickeey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">学习笔记_Html
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-09 12:00:00 / Modified: 23:21:18" itemprop="dateCreated datePublished" datetime="2018-05-09T12:00:00+08:00">2018-05-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/09/9_学习笔记_Html/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/09/9_学习笔记_Html/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前端的架构组成</p>
+<ul>
+<li><p>HTML 网页的骨架, 掌握着web的框架</p>
+</li>
+<li><p>CSS  网页的外貌,样式; 图片, 视频什么的</p>
+</li>
+<li><p>JavaS 网页的灵魂, 控制行为, 控制着网页对数据的反应</p>
+<p>​</p>
+<p>HTML 是一种标签语言 </p>
+<p>本文是根据阮一峰老师的<a href="http://www.ruanyifeng.com/blog/2009/05/guide_to_semantic_html_elements.html" target="_blank" rel="noopener">HTML学习笔记</a>, 摘录而成</p>
+</li>
+</ul>
+<h1 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h1><h2 id="div"><a href="#div" class="headerlink" title="div"></a>div</h2><p>含义: 页面内容的独立组成部分</p>
+<ul>
+<li><p>划分网页布局</p>
+<p>​</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"header"</span>&gt;</span> 页面的头部<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<h2 id="h1-h2-h3-h4-h5-h6"><a href="#h1-h2-h3-h4-h5-h6" class="headerlink" title="h1. h2 h3 h4 h5 h6"></a>h1. h2 h3 h4 h5 h6</h2><p>含义: 内容的标题</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>二级标题<span class="tag">&lt;<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="p"><a href="#p" class="headerlink" title="p"></a>p</h2><p>含义: 段落</p>
+<p>狭义的段落</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这是一个段落<span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="blockquote"><a href="#blockquote" class="headerlink" title="blockquote"></a>blockquote</h2><p>含义: 引用来自其他来源的独立文本</p>
+<p>附属两个属性: cit 指引材料的URL的地址, title : 材料的现骨干信息</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blockquote</span>&gt;</span></span><br><span class="line">放你妈的狗皮膏药</span><br><span class="line">  <span class="tag">&lt;<span class="name">cite</span>&gt;</span>鲁迅[野草]<span class="tag">&lt;/<span class="name">cite</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h1><h2 id="a"><a href="#a" class="headerlink" title="a"></a>a</h2><p>含义: 与<code>href</code>属性搭配使用, 链接至外部链接, 或者同一页的某个锚点</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"chapter2.html"</span>&gt;</span>第二章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="abbr"><a href="#abbr" class="headerlink" title="abbr"></a>abbr</h2><p>含义: 内容是某个术语或短语的缩写形式 , 有title的属性,用来指明缩写代表的原始词组,  缩写</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">abbr</span> <span class="attr">title</span> = <span class="string">"Europe"</span>&gt;</span>Eur<span class="tag">&lt;/<span class="name">abbr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="acronym"><a href="#acronym" class="headerlink" title="acronym"></a>acronym</h2><p>含义: 表示是一个词组的首字母的简称, 比如BBC </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">acronym</span> <span class="attr">title</span> =<span class="string">"World wide web"</span>&gt;</span>www<span class="tag">&lt;/<span class="name">acronym</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="em"><a href="#em" class="headerlink" title="em"></a>em</h2><p>含义: 强调 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span>我正在强调该内容<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="strong"><a href="#strong" class="headerlink" title="strong"></a>strong</h2><p>含义 表示币em更强的强调</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>比他妈的em更加重要<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="addresss"><a href="#addresss" class="headerlink" title="addresss"></a>addresss</h2><p>含义: 表示特定文档或者文档的联系信息或者联系方式</p>
+<h2 id="cite"><a href="#cite" class="headerlink" title="cite"></a>cite</h2><p>含义：引述的来源</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cite</span>&gt;</span>哈利波特<span class="tag">&lt;/<span class="name">cite</span>&gt;</span>的坐着是J.K.lonin</span><br></pre></td></tr></table></figure>
+<h2 id="dfn"><a href="#dfn" class="headerlink" title="dfn"></a>dfn</h2><p>含义:  表示一个定义</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dfn</span>&gt;</span>Internet Explorer<span class="tag">&lt;/<span class="name">dfn</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="del"><a href="#del" class="headerlink" title="del"></a>del</h2><p>含义: 表示该信息已被删除</p>
+<p>##　ins</p>
+<p>含义：与del作用相反，表示修订后的插入的内容</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><p>含义:　程序代码</p>
+<h2 id="samp"><a href="#samp" class="headerlink" title="samp"></a>samp</h2><p>含义:  程序代码的输出结果</p>
+<h2 id="kbd"><a href="#kbd" class="headerlink" title="kbd"></a>kbd</h2><p>含义：用户键入的文本</p>
+<h2 id="var"><a href="#var" class="headerlink" title="var"></a>var</h2><p>含义：程序的变量和参数</p>
+<h2 id="q"><a href="#q" class="headerlink" title="q"></a>q</h2><p>含义: 较短的引语</p>
+<h2 id="sub-sup"><a href="#sub-sup" class="headerlink" title="sub/sup"></a>sub/sup</h2><p>含义: 下标/上标</p>
+<h2 id="span"><a href="#span" class="headerlink" title="span"></a>span</h2><p>含义: 标识其他标签不适合表示的内容, 是一个通用型的行内标签</p>
+<h1 id="列表元素"><a href="#列表元素" class="headerlink" title="列表元素"></a>列表元素</h1><h2 id="ul-ol-li"><a href="#ul-ol-li" class="headerlink" title="ul,ol,li"></a>ul,ol,li</h2><p>含义:  表示一组相同格式的信息</p>
+<h2 id="dl-dd-dt"><a href="#dl-dd-dt" class="headerlink" title="dl, dd, dt"></a>dl, dd, dt</h2><p>含义: 一个属于列表</p>
+<h1 id="表格元素"><a href="#表格元素" class="headerlink" title="表格元素"></a>表格元素</h1><h1 id="分割元素"><a href="#分割元素" class="headerlink" title="分割元素"></a>分割元素</h1><h2 id="br"><a href="#br" class="headerlink" title="br"></a>br</h2><p>含义: 表示换行</p>
+<h2 id="hr"><a href="#hr" class="headerlink" title="hr"></a>hr</h2><p>含义: 连个部分之间的一根水平直线分割</p>
+<h1 id="不建议使用的元素"><a href="#不建议使用的元素" class="headerlink" title="不建议使用的元素"></a>不建议使用的元素</h1><p>一些只设计视觉效果 很可能被飞出的元素</p>
+<h1 id="已经被废除的元素"><a href="#已经被废除的元素" class="headerlink" title="已经被废除的元素"></a>已经被废除的元素</h1>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Html-前端/" rel="tag"># Html 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/03/7-Github常规操作/" rel="next" title="7.本地代码上传Github">
+                <i class="fa fa-chevron-left"></i> 7.本地代码上传Github
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/09/10_学习笔记_JavaScript/" rel="prev" title="学习笔记_JavaScript">
+                学习笔记_JavaScript <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Ricky.jpg"
+                alt="星星周" />
+            
+              <p class="site-author-name" itemprop="name">星星周</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tages/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/RickeeyZhou" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/rickeey_chow" target="_blank" title="Instagram"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.linkedin.com/in/于敬-周-248518104/" target="_blank" title="Linkedin"><i class="fa fa-fw fa-linkedin"></i>Linkedin</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/9ee688f94bd1" target="_blank" title="简书"><i class="fa fa-fw fa-fort-awesome"></i>简书</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#块级元素"><span class="nav-number">1.</span> <span class="nav-text">块级元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#div"><span class="nav-number">1.1.</span> <span class="nav-text">div</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#h1-h2-h3-h4-h5-h6"><span class="nav-number">1.2.</span> <span class="nav-text">h1. h2 h3 h4 h5 h6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p"><span class="nav-number">1.3.</span> <span class="nav-text">p</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blockquote"><span class="nav-number">1.4.</span> <span class="nav-text">blockquote</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#行内元素"><span class="nav-number">2.</span> <span class="nav-text">行内元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a"><span class="nav-number">2.1.</span> <span class="nav-text">a</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abbr"><span class="nav-number">2.2.</span> <span class="nav-text">abbr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#acronym"><span class="nav-number">2.3.</span> <span class="nav-text">acronym</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#em"><span class="nav-number">2.4.</span> <span class="nav-text">em</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strong"><span class="nav-number">2.5.</span> <span class="nav-text">strong</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addresss"><span class="nav-number">2.6.</span> <span class="nav-text">addresss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cite"><span class="nav-number">2.7.</span> <span class="nav-text">cite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dfn"><span class="nav-number">2.8.</span> <span class="nav-text">dfn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#del"><span class="nav-number">2.9.</span> <span class="nav-text">del</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">2.10.</span> <span class="nav-text">code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#samp"><span class="nav-number">2.11.</span> <span class="nav-text">samp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kbd"><span class="nav-number">2.12.</span> <span class="nav-text">kbd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var"><span class="nav-number">2.13.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#q"><span class="nav-number">2.14.</span> <span class="nav-text">q</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sub-sup"><span class="nav-number">2.15.</span> <span class="nav-text">sub/sup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#span"><span class="nav-number">2.16.</span> <span class="nav-text">span</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表元素"><span class="nav-number">3.</span> <span class="nav-text">列表元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ul-ol-li"><span class="nav-number">3.1.</span> <span class="nav-text">ul,ol,li</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dl-dd-dt"><span class="nav-number">3.2.</span> <span class="nav-text">dl, dd, dt</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表格元素"><span class="nav-number">4.</span> <span class="nav-text">表格元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分割元素"><span class="nav-number">5.</span> <span class="nav-text">分割元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#br"><span class="nav-number">5.1.</span> <span class="nav-text">br</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hr"><span class="nav-number">5.2.</span> <span class="nav-text">hr</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不建议使用的元素"><span class="nav-number">6.</span> <span class="nav-text">不建议使用的元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#已经被废除的元素"><span class="nav-number">7.</span> <span class="nav-text">已经被废除的元素</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">星星周</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+</html>

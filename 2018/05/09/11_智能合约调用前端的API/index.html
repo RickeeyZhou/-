@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|18:300,300italic,400,400italic,700,700italic|Permanent Marker:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=6.2.0" color="#222">
+
+
+  <link rel="manifest" href="/favicon.ico">
+
+
+  <meta name="msapplication-config" content="/favicon.ico" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="详细讲解一个标准的智能合约客户端该有的样子  Node_modules存放react框架下所有类库文件 星云链API的库文件命令: 进入项目目录 1npm i nebulas 下列命令展示该项目所有依赖包: 1npm -l package.json 启动项目命令: 1npm start  解析源码目录: / src/ index.js 该文件是索引文件 123456789import React">
+<meta name="keywords" content="智能合约">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端调用API操作内置函数">
+<meta property="og:url" content="http://yoursite.com/2018/05/09/11_智能合约调用前端的API/index.html">
+<meta property="og:site_name" content="Rickeey&#39;s Blog">
+<meta property="og:description" content="详细讲解一个标准的智能合约客户端该有的样子  Node_modules存放react框架下所有类库文件 星云链API的库文件命令: 进入项目目录 1npm i nebulas 下列命令展示该项目所有依赖包: 1npm -l package.json 启动项目命令: 1npm start  解析源码目录: / src/ index.js 该文件是索引文件 123456789import React">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10649797-407df3e1706223ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10649797-c8a3796659bd6e22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-09T15:10:38.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端调用API操作内置函数">
+<meta name="twitter:description" content="详细讲解一个标准的智能合约客户端该有的样子  Node_modules存放react框架下所有类库文件 星云链API的库文件命令: 进入项目目录 1npm i nebulas 下列命令展示该项目所有依赖包: 1npm -l package.json 启动项目命令: 1npm start  解析源码目录: / src/ index.js 该文件是索引文件 123456789import React">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/10649797-407df3e1706223ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/09/11_智能合约调用前端的API/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>前端调用API操作内置函数 | Rickeey's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rickeey's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tages/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/09/11_智能合约调用前端的API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="星星周">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Ricky.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickeey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端调用API操作内置函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-09 17:00:00 / Modified: 23:10:38" itemprop="dateCreated datePublished" datetime="2018-05-09T17:00:00+08:00">2018-05-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/09/11_智能合约调用前端的API/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/09/11_智能合约调用前端的API/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>详细讲解一个标准的智能合约客户端该有的样子</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10649797-407df3e1706223ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件包.png"></p>
+<p>Node_modules存放<code>react</code>框架下所有<code>类库文件</code></p>
+<p>星云链API的库文件命令:</p>
+<p>进入项目目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i nebulas</span><br></pre></td></tr></table></figure>
+<p>下列命令展示该项目所有依赖包:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -l package.json</span><br></pre></td></tr></table></figure>
+<p>启动项目命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/10649797-c8a3796659bd6e22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="启动5.png"></p>
+<h2 id="解析源码"><a href="#解析源码" class="headerlink" title="解析源码"></a>解析源码</h2><p>目录: / src/ index.js</p>
+<p>该文件是索引文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./app'</span></span><br><span class="line"><span class="comment">// 导入包</span></span><br><span class="line"><span class="comment">// 代码入口</span></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;App /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这里是所有程序的入口.</p>
+<p>打开node.json包文件下的<code>nebulas</code>包, 进入<code>index.js</code>文件</p>
+<p>看到如下结构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	HttpRequest: HttpRequest,</span><br><span class="line">    Neb: Neb,</span><br><span class="line">    Account: Account,</span><br><span class="line">    Transaction: Transaction,</span><br><span class="line">    Utils: Utils,</span><br><span class="line">    CryptoUtils: CryptoUtils,</span><br><span class="line">    Unit: Unit</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这就是返回的结构,一个map</p>
+<h2 id="检查是否能调用nebulas包测试"><a href="#检查是否能调用nebulas包测试" class="headerlink" title="检查是否能调用nebulas包测试"></a>检查是否能调用nebulas包测试</h2><p>执行<code>/src/</code>下新建文件<code>testAPI.js</code> </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入包文件，可以使用里面提供的方法</span></span><br><span class="line"><span class="keyword">var</span> Nebulas = <span class="built_in">require</span>(<span class="string">'nebulas'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Nebulas)</span><br></pre></td></tr></table></figure>
+<p>执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node nebulasTest.js</span><br></pre></td></tr></table></figure>
+<p>输出结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">rick@Rick:~/Desktop/新云/0509/demoapp-0011/src$ node testAPI.js</span><br><span class="line">&#123; HttpRequest: [Function: HttpRequest],</span><br><span class="line">  Neb: [Function: Neb],</span><br><span class="line">  Account: </span><br><span class="line">   &#123; [Function: Account]</span><br><span class="line">     NewAccount: [Function],</span><br><span class="line">     isValidAddress: [Function],</span><br><span class="line">     fromAddress: [Function],</span><br><span class="line">     getNormalType: [Function],</span><br><span class="line">     getContractType: [Function] &#125;,</span><br><span class="line">  Transaction: [Function: Transaction],</span><br><span class="line">  Utils: </span><br><span class="line">   &#123; isNull: [Function: isNull],</span><br><span class="line">     isBrowser: [Function: isBrowser],</span><br><span class="line">     isBigNumber: [Function: isBigNumber],</span><br><span class="line">     isString: [Function: isString],</span><br><span class="line">     isObject: [Function: isObject],</span><br><span class="line">     isFunction: [Function: isFunction],</span><br><span class="line">     isNumber: [Function: isNumber],</span><br><span class="line">     toBigNumber: [Function: toBigNumber],</span><br><span class="line">     toString: [Function: toString],</span><br><span class="line">     argumentsToObject: [Function: argumentsToObject],</span><br><span class="line">     zipArraysToObject: [Function: zipArraysToObject] &#125;,</span><br><span class="line">  CryptoUtils: </span><br><span class="line">   &#123; secp256k1: </span><br><span class="line">      &#123; privateKeyVerify: [Function],</span><br><span class="line">        privateKeyExport: [Function],</span><br><span class="line">        privateKeyImport: [Function],</span><br><span class="line">        privateKeyNegate: [Function],</span><br><span class="line">        privateKeyModInverse: [Function],</span><br><span class="line">        privateKeyTweakAdd: [Function],</span><br><span class="line">        privateKeyTweakMul: [Function],</span><br><span class="line">        publicKeyCreate: [Function],</span><br><span class="line">        publicKeyConvert: [Function],</span><br><span class="line">        publicKeyVerify: [Function],</span><br><span class="line">        publicKeyTweakAdd: [Function],</span><br><span class="line">        publicKeyTweakMul: [Function],</span><br><span class="line">        publicKeyCombine: [Function],</span><br><span class="line">        signatureNormalize: [Function],</span><br><span class="line">        signatureExport: [Function],</span><br><span class="line">        signatureImport: [Function],</span><br><span class="line">        signatureImportLax: [Function],</span><br><span class="line">        sign: [Function],</span><br><span class="line">        verify: [Function],</span><br><span class="line">        recover: [Function],</span><br><span class="line">        ecdh: [Function],</span><br><span class="line">        ecdhUnsafe: [Function],</span><br><span class="line">        path: <span class="string">'/home/rick/Desktop/新云/0509/demoapp-0011/node_modules/secp256k1/build/Release/secp256k1.node'</span> &#125;,</span><br><span class="line">     keccak: [Function: keccak],</span><br><span class="line">     sha3: [Function: sha3],</span><br><span class="line">     ripemd160: [Function: ripemd160],</span><br><span class="line">     crypto: </span><br><span class="line">      &#123; _toBuf: [Function: toBuf],</span><br><span class="line">        createCipher: [Function: createCipher],</span><br><span class="line">        createCipheriv: [Function: createCipheriv],</span><br><span class="line">        createDecipher: [Function: createDecipher],</span><br><span class="line">        createDecipheriv: [Function: createDecipheriv],</span><br><span class="line">        createDiffieHellman: [Function: createDiffieHellman],</span><br><span class="line">        createDiffieHellmanGroup: [Function: createDiffieHellmanGroup],</span><br><span class="line">        createECDH: [Function: createECDH],</span><br><span class="line">        createHash: [Function: createHash],</span><br><span class="line">        createHmac: [Function: createHmac],</span><br><span class="line">        createSign: [Function: createSign],</span><br><span class="line">        createVerify: [Function: createVerify],</span><br><span class="line">        getCiphers: [Function],</span><br><span class="line">        getCurves: [Function],</span><br><span class="line">        getDiffieHellman: [Function: createDiffieHellmanGroup],</span><br><span class="line">        getHashes: [Function],</span><br><span class="line">        pbkdf2: [Function: pbkdf2],</span><br><span class="line">        pbkdf2Sync: [Function: pbkdf2Sync],</span><br><span class="line">        privateDecrypt: [Function],</span><br><span class="line">        privateEncrypt: [Function],</span><br><span class="line">        prng: [Function: randomBytes],</span><br><span class="line">        pseudoRandomBytes: [Function: randomBytes],</span><br><span class="line">        publicDecrypt: [Function],</span><br><span class="line">        publicEncrypt: [Function],</span><br><span class="line">        randomBytes: [Function: randomBytes],</span><br><span class="line">        randomFill: [Function: randomFill],</span><br><span class="line">        randomFillSync: [Function: randomFillSync],</span><br><span class="line">        rng: [Function: randomBytes],</span><br><span class="line">        setEngine: [Function: setEngine],</span><br><span class="line">        timingSafeEqual: [Function: timingSafeEqual],</span><br><span class="line">        getFips: [Function: getFipsDisabled],</span><br><span class="line">        setFips: [Function: setFipsDisabled],</span><br><span class="line">        Certificate: [Function],</span><br><span class="line">        Cipher: [Function],</span><br><span class="line">        Cipheriv: [Function],</span><br><span class="line">        Decipher: [Function],</span><br><span class="line">        Decipheriv: [Function],</span><br><span class="line">        DiffieHellman: [Function: DiffieHellman],</span><br><span class="line">        DiffieHellmanGroup: [Function: DiffieHellmanGroup],</span><br><span class="line">        ECDH: [Function],</span><br><span class="line">        Hash: [Function],</span><br><span class="line">        Hmac: [Function],</span><br><span class="line">        Sign: [Function],</span><br><span class="line">        Verify: [Function],</span><br><span class="line">        DEFAULT_ENCODING: [Getter/Setter],</span><br><span class="line">        constants: [Object],</span><br><span class="line">        createCredentials: [Getter],</span><br><span class="line">        Credentials: [Getter] &#125;,</span><br><span class="line">     scrypt: [Function: scrypt],</span><br><span class="line">     uuid: &#123; [Function: v4] v1: [Function: v1], v4: [Circular] &#125;,</span><br><span class="line">     zeros: [Function: zeros],</span><br><span class="line">     isHexPrefixed: [Function: isHexPrefixed],</span><br><span class="line">     padToBigEndian: [Function: padToBigEndian],</span><br><span class="line">     toBuffer: [Function: toBuffer],</span><br><span class="line">     bufferToHex: [Function: bufferToHex],</span><br><span class="line">     privateToPublic: [Function: privateToPublic],</span><br><span class="line">     isValidPublic: [Function: isValidPublic],</span><br><span class="line">     sign: [Function: sign],</span><br><span class="line">     verify: [Function: verify],</span><br><span class="line">     recover: [Function: recover] &#125;,</span><br><span class="line">  Unit: </span><br><span class="line">   &#123; toBasic: [Function: toBasic],</span><br><span class="line">     fromBasic: [Function: fromBasic],</span><br><span class="line">     nasToBasic: [Function: nasToBasic] &#125; &#125;</span><br><span class="line">rick@Rick:~/Desktop/新云/0509/demoapp-0011/src$</span><br></pre></td></tr></table></figure>
+<p>可调用的包全部暴露出来.</p>
+<p>API注解</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="comment">//导包</span></span><br><span class="line"><span class="keyword">var</span> Nebulas = <span class="built_in">require</span>(<span class="string">'nebulas'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台输出结果显示nebulas自带的方法</span></span><br><span class="line"><span class="built_in">console</span>.log(Nebulas)</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过nebulas获取不同方法的对象</span></span><br><span class="line"><span class="keyword">var</span> Neb = Nebulas.Neb;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试链,参数可换成localhost:8685,获取本地链对象</span></span><br><span class="line"><span class="keyword">var</span> neb = <span class="keyword">new</span> Neb(<span class="keyword">new</span> Nebulas.HttpRequest(<span class="string">"https://testnet.nebulas.io"</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//账户</span></span><br><span class="line"><span class="keyword">var</span> Account = Nebulas.Account;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"\n\n"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(neb)</span><br><span class="line"></span><br><span class="line"><span class="comment">//链上提供的各种API方法，如果不清楚，可以去https://nebulasio.github.io/neb.js/API.html查看</span></span><br><span class="line"><span class="keyword">var</span> api = neb.api;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前区块链状态</span></span><br><span class="line">api.getNebState().then(<span class="function"><span class="keyword">function</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 异步 什么是异步：相当于多线程执行程序，不会因为某个方法未结束而阻塞</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"\n\n"</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(state)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前链上最新的区块信息</span></span><br><span class="line">api.latestIrreversibleBlock().then(<span class="function"><span class="keyword">function</span>(<span class="params">blockData</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"\n\n"</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(blockData)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询钱包状态  参数是钱包地址</span></span><br><span class="line">api.getAccountState(&#123;<span class="attr">address</span>: <span class="string">"n1YLc2ndCuzS5hKthxvpBDtv1c1YPa6Pacw"</span>&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"\n\n"</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(state)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//查询合约状态 参数是合约地址</span></span><br><span class="line">api.getAccountState(&#123;<span class="attr">address</span>: <span class="string">"n1qGHtVR16SDtuzM9KSGvxtpT9PpUfr8QaR"</span>&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"\n\n"</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(state)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//查询区块链上的信息</span></span><br><span class="line"><span class="comment">//新生成的钱包地址，因为查询是谁都能查</span></span><br><span class="line"><span class="keyword">var</span> <span class="keyword">from</span> = Account.NewAccount().getAddressString();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"\n\n\n"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">from</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"\n\n\n"</span>)</span><br><span class="line"><span class="comment">//合约地址：制定从哪个合约上查询</span></span><br><span class="line"><span class="keyword">var</span> dappAddress = <span class="string">"n1qGHtVR16SDtuzM9KSGvxtpT9PpUfr8QaR"</span></span><br><span class="line"><span class="keyword">var</span> value = <span class="string">"0"</span>;</span><br><span class="line"><span class="keyword">var</span> nonce = <span class="string">"0"</span></span><br><span class="line"><span class="keyword">var</span> gas_price = <span class="string">"1000000"</span></span><br><span class="line"><span class="keyword">var</span> gas_limit = <span class="string">"2000000"</span></span><br><span class="line"><span class="comment">//调用的方法，get获取</span></span><br><span class="line"><span class="keyword">var</span> callFunction = <span class="string">"get"</span>;</span><br><span class="line"><span class="comment">//需要查询的内容，字符串表示//</span></span><br><span class="line"><span class="keyword">var</span> callArgs = <span class="string">"[\""</span> + <span class="string">"test"</span> + <span class="string">"\"]"</span>;</span><br><span class="line"><span class="keyword">var</span> contract = &#123;</span><br><span class="line">    <span class="string">"function"</span>: callFunction,</span><br><span class="line">    <span class="string">"args"</span>: callArgs</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用查询方法,上面写的一堆参数</span></span><br><span class="line">neb.api.call(<span class="keyword">from</span>,dappAddress,value,nonce,gas_price,gas_limit,contract).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(resp)</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//cbSearch(err)</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"error:"</span> + err.message)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>实现在区块链上调用API查询内容代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> React,&#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Nebulas = <span class="built_in">require</span>(<span class="string">'nebulas'</span>)</span><br><span class="line"><span class="keyword">var</span> Neb = Nebulas.Neb; <span class="comment">// Neb</span></span><br><span class="line"><span class="keyword">var</span> neb = <span class="keyword">new</span> Neb(<span class="keyword">new</span> Nebulas.HttpRequest(<span class="string">"https://testnet.nebulas.io"</span>));</span><br><span class="line"><span class="keyword">var</span> Account = Nebulas.Account;</span><br><span class="line"><span class="keyword">var</span> api = neb.api;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">	<span class="comment">//结构提</span></span><br><span class="line">	<span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">		<span class="keyword">super</span>(props)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//页面渲染</span></span><br><span class="line">	render() &#123;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			</span><br><span class="line">			&lt;div style=&#123;&#123;<span class="attr">backgroundColor</span>: <span class="string">"rgb(52,83,136)"</span>,<span class="attr">flex</span>: <span class="number">1</span></span><br><span class="line">				,<span class="attr">display</span>: <span class="string">"flex"</span>,<span class="attr">flexDirection</span>: <span class="string">'column'</span>,<span class="attr">alignItems</span>: <span class="string">'center'</span>&#125;&#125;&gt;</span><br><span class="line">          		&lt;img src=<span class="string">"imag/logo.png"</span> style=&#123;&#123;<span class="attr">marginTop</span>: <span class="number">20</span>&#125;&#125;&gt;&lt;/img&gt;</span><br><span class="line">         	  	&lt;div style=&#123;&#123;<span class="attr">width</span>: <span class="string">"100%"</span>,<span class="attr">height</span>: <span class="number">100</span>,<span class="attr">marginTop</span>: <span class="number">100</span>,<span class="attr">display</span>: <span class="string">"flex"</span>,<span class="attr">justifyContent</span>: <span class="string">'center'</span>&#125;&#125;&gt;</span><br><span class="line">              	&lt;input</span><br><span class="line">                	ref=<span class="string">"inputRef"</span></span><br><span class="line">                	style=&#123;&#123;<span class="attr">borderWidth</span>: <span class="number">3</span>,<span class="attr">borderColor</span>: <span class="string">"gray"</span>,<span class="attr">fontSize</span>: <span class="number">50</span>,<span class="attr">flex</span>: <span class="number">1</span>,<span class="attr">marginLeft</span>: <span class="number">100</span>&#125;&#125;/&gt;</span><br><span class="line">          			<span class="comment">//按钮标签，绑定onclick 点击时间</span></span><br><span class="line">                	&lt;button onClick = &#123;() =&gt; &#123;</span><br><span class="line">                		<span class="built_in">console</span>.log(<span class="string">"搜索"</span>)</span><br><span class="line">                  	<span class="built_in">console</span>.log(<span class="keyword">this</span>.refs.inputRef.value)</span><br><span class="line"></span><br><span class="line">                  <span class="comment">//以下是调用neb自带的查询方法,用来实现从区块链上查询内容</span></span><br><span class="line">                  <span class="keyword">var</span> <span class="keyword">from</span> = Account.NewAccount().getAddressString();</span><br><span class="line">                  <span class="keyword">var</span> dappAddress = <span class="string">"n1NPapTqKduzc9vFVsP1uqm1FqFEQWxj3Mp"</span></span><br><span class="line">                  <span class="keyword">var</span> value = <span class="string">"0"</span>;</span><br><span class="line">                  <span class="keyword">var</span> nonce = <span class="string">"0"</span></span><br><span class="line">                  <span class="keyword">var</span> gas_price = <span class="string">"1000000"</span></span><br><span class="line">                  <span class="keyword">var</span> gas_limit = <span class="string">"2000000"</span></span><br><span class="line">                  <span class="keyword">var</span> callFunction = <span class="string">"get"</span>;</span><br><span class="line">                  <span class="comment">//获取input标签输入的内容</span></span><br><span class="line">                  <span class="keyword">var</span> callArgs = <span class="string">"[\""</span> + <span class="keyword">this</span>.refs.inputRef.value + <span class="string">"\"]"</span>;</span><br><span class="line">                  <span class="keyword">var</span> contract = &#123;</span><br><span class="line">                      <span class="string">"function"</span>: callFunction,</span><br><span class="line">                      <span class="string">"args"</span>: callArgs</span><br><span class="line">                  &#125;</span><br><span class="line"></span><br><span class="line">                  neb.api.call(<span class="keyword">from</span>,dappAddress,value,nonce,gas_price,gas_limit,contract).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>) </span>&#123;</span><br><span class="line">                      <span class="built_in">console</span>.log(<span class="string">"over\n"</span>)</span><br><span class="line">                      <span class="built_in">console</span>.log(resp)</span><br><span class="line">                  &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">                      <span class="built_in">console</span>.log(<span class="string">"error:"</span> + err.message)</span><br><span class="line">                  &#125;)</span><br><span class="line"></span><br><span class="line">                	&#125;&#125;</span><br><span class="line">                	<span class="comment">//设置按钮样式</span></span><br><span class="line">                	style=&#123;&#123;<span class="attr">width</span>: <span class="number">200</span>,<span class="attr">marginLeft</span>: <span class="number">40</span>,<span class="attr">fontSize</span>: <span class="number">50</span>,<span class="attr">marginRight</span>: <span class="number">100</span>&#125;&#125; &gt;SEARCH&lt;<span class="regexp">/button&gt;	</span></span><br><span class="line"><span class="regexp">          		&lt;/</span>div&gt;</span><br><span class="line">        	&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">			</span></span><br><span class="line"><span class="regexp">		)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/智能合约/" rel="tag"># 智能合约</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/09/10_学习笔记_JavaScript/" rel="next" title="学习笔记_JavaScript">
+                <i class="fa fa-chevron-left"></i> 学习笔记_JavaScript
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/09/8_新手如何理解HTML,CSS,JavaS的关系,/" rel="prev" title="JavaScript,Html,CSS之间的联系">
+                JavaScript,Html,CSS之间的联系 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Ricky.jpg"
+                alt="星星周" />
+            
+              <p class="site-author-name" itemprop="name">星星周</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tages/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/RickeeyZhou" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/rickeey_chow" target="_blank" title="Instagram"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.linkedin.com/in/于敬-周-248518104/" target="_blank" title="Linkedin"><i class="fa fa-fw fa-linkedin"></i>Linkedin</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/9ee688f94bd1" target="_blank" title="简书"><i class="fa fa-fw fa-fort-awesome"></i>简书</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解析源码"><span class="nav-number">1.</span> <span class="nav-text">解析源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查是否能调用nebulas包测试"><span class="nav-number">2.</span> <span class="nav-text">检查是否能调用nebulas包测试</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">星星周</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+</html>

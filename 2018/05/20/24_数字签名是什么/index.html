@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|18:300,300italic,400,400italic,700,700italic|Permanent Marker:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=6.2.0" color="#222">
+
+
+  <link rel="manifest" href="/favicon.ico">
+
+
+  <meta name="msapplication-config" content="/favicon.ico" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="阅读要求：已经理解哈希加密，非对称加密的意义 本文我参考了阮一峰老师的文章，阮老师实在是写的太好了，他所说就是我我想表达的 不管https签名证书还是比特币的数字签名． 我们所指的就是数字签名． 其中包含了两个加密技术，１．非对称加密　２．哈希加密 数字签名所使用的场景： Ａ需要将信息加密传递给Ｂ 数字签名解决了如下几个问题：  利用公钥对明文加密，私钥解密密文，保证了信息只有Ｂ能查看． 利用哈希">
+<meta name="keywords" content="密码学入门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字签名是什么？">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/24_数字签名是什么/index.html">
+<meta property="og:site_name" content="Rickeey&#39;s Blog">
+<meta property="og:description" content="阅读要求：已经理解哈希加密，非对称加密的意义 本文我参考了阮一峰老师的文章，阮老师实在是写的太好了，他所说就是我我想表达的 不管https签名证书还是比特币的数字签名． 我们所指的就是数字签名． 其中包含了两个加密技术，１．非对称加密　２．哈希加密 数字签名所使用的场景： Ａ需要将信息加密传递给Ｂ 数字签名解决了如下几个问题：  利用公钥对明文加密，私钥解密密文，保证了信息只有Ｂ能查看． 利用哈希">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080901.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080902.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080903.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080904.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080905.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080906.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080907.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080908.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080909.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080910.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080911.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080912.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080913.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080914.jpg">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080915.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080916.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080917.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080918.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080919.jpg">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080920.png">
+<meta property="og:updated_time" content="2018-05-20T14:50:50.093Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数字签名是什么？">
+<meta name="twitter:description" content="阅读要求：已经理解哈希加密，非对称加密的意义 本文我参考了阮一峰老师的文章，阮老师实在是写的太好了，他所说就是我我想表达的 不管https签名证书还是比特币的数字签名． 我们所指的就是数字签名． 其中包含了两个加密技术，１．非对称加密　２．哈希加密 数字签名所使用的场景： Ａ需要将信息加密传递给Ｂ 数字签名解决了如下几个问题：  利用公钥对明文加密，私钥解密密文，保证了信息只有Ｂ能查看． 利用哈希">
+<meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080901.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/20/24_数字签名是什么/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>数字签名是什么？ | Rickeey's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rickeey's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tages/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/24_数字签名是什么/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="星星周">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Ricky.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickeey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数字签名是什么？
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-20 22:34:00 / Modified: 22:50:50" itemprop="dateCreated datePublished" datetime="2018-05-20T22:34:00+08:00">2018-05-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/区块链/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/20/24_数字签名是什么/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/20/24_数字签名是什么/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>阅读要求：已经理解哈希加密，非对称加密的意义</p>
+<p>本文我参考了阮一峰老师的文章，阮老师实在是写的太好了，他所说就是我我想表达的</p>
+<p>不管https签名证书还是比特币的数字签名．</p>
+<p>我们所指的就是数字签名．</p>
+<p>其中包含了两个加密技术，１．非对称加密　２．哈希加密</p>
+<p>数字签名所使用的场景：</p>
+<p>Ａ需要将信息加密传递给Ｂ</p>
+<p>数字签名解决了如下几个问题：</p>
+<ul>
+<li>利用公钥对明文加密，私钥解密密文，保证了信息只有Ｂ能查看．</li>
+<li>利用哈希对明文就是摘要处理，保证了收到的信息没有被更改</li>
+</ul>
+<p>你一定很懵逼，不要紧，你已经知道数字签名本质上用了两个加密算法，而且达到了不同的功能，</p>
+<p>下面允许我引用阮一峰老师的配图向你解释数字签名到底是ＴＭ什么玩意</p>
+<p>１．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080901.png" alt="img"></p>
+<p>​    鲍勃有两把钥匙，一把是公钥，另一把是私钥。</p>
+<p>２．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080902.png" alt="img"></p>
+<p>​    鲍勃把公钥送给他的朋友们—-帕蒂、道格、苏珊—-每人一把</p>
+<p>３．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080903.png" alt="img"></p>
+<p>苏珊要给鲍勃写一封保密的信。她写完后用鲍勃的公钥加密，就可以达到保密的效果。</p>
+<p>４．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080904.png" alt="img"></p>
+<p>鲍勃收信后，用私钥解密，就看到了信件内容。这里要强调的是，只要鲍勃的私钥不泄露，这封信就是安全的，即使落在别人手里，也无法解密</p>
+<p>５．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080905.png" alt="img"></p>
+<p>鲍勃给苏珊回信，决定采用”数字签名”。他写完后先用Hash函数，生成信件的摘要（digest）。</p>
+<p>这里需要留意！数字签名其实发送了两个信息，一个是原文，一个是哈希后的摘要，如果收到的原文哈希后</p>
+<p>依旧和摘要相同，说明原文没有被修改过．!img](<a href="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080907.png" target="_blank" rel="noopener">http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080907.png</a>)</p>
+<p>６．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080906.png" alt="img"></p>
+<p>然后，鲍勃使用私钥，对这个摘要加密，生成”数字签名”（signature）。</p>
+<p>７．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080907.png" alt="img"></p>
+<p>鲍勃将这个签名，附在信件下面，一起发给苏珊。</p>
+<p>８．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080908.png" alt="img"></p>
+<p>苏珊收信后，取下数字签名，用鲍勃的公钥解密，得到信件的摘要。由此证明，这封信确实是鲍勃发出的，</p>
+<p>这里证明了一个有趣的现象，公钥私钥都可以进行加密解密．</p>
+<p>９．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080909.png" alt="img"></p>
+<p>苏珊再对信件本身使用Hash函数，将得到的结果，与上一步得到的摘要进行对比。如果两者一致，就证明这封信未被修改过，这就是一个完整的数字签名的结束．</p>
+<p>１０．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080910.png" alt="img"></p>
+<p>复杂的情况出现了。道格想欺骗苏珊，他偷偷使用了苏珊的电脑，用自己的公钥换走了鲍勃的公钥。此时，苏珊实际拥有的是道格的公钥，但是还以为这是鲍勃的公钥。因此，道格就可以冒充鲍勃，用自己的私钥做成”数字签名”，写信给苏珊，让苏珊用假的鲍勃公钥进行解密。</p>
+<p>这里解释一下，有人会说，公钥能换，为什么不换掉私钥？</p>
+<p>因为我们基于私钥是绝对安全的假设，公钥是整个环节中的薄弱环节，因为公钥是公开的，所以攻击公钥持有者最容易．这的确造成了伪造公钥的风险，这所以催生了中心化机构＂证书中心ＣＡ＂</p>
+<p>１１．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080911.png" alt="img"></p>
+<p>后来，苏珊感觉不对劲，发现自己无法确定公钥是否真的属于鲍勃。她想到了一个办法，要求鲍勃去找”证书中心”（certificate authority，简称CA），为公钥做认证。证书中心用自己的私钥，对鲍勃的公钥和一些相关信息一起加密，生成”数字证书”（Digital Certificate）。</p>
+<p>ＣＡ的存在是仅仅为了证明＂公钥＂的真伪，不干涉用户之间传输信息，我只是证明你使用的公钥是真的，仅仅在原有的数字签名环节，增加了一个对＂公钥，私钥持有人信息＂的ＣＡ非对称加密．表达的意思是：如果苏珊能用ＣＡ官方的公钥解开数字证书，就保证了信息是官方安全的．</p>
+<p>这样做之所以安全的根本原因是：没有人可以伪造ＣＡ的公钥，比如在网络中，ＣＡ的公钥是内嵌在浏览器中的．</p>
+<p>１２．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080912.png" alt="img"></p>
+<p>鲍勃拿到数字证书以后，就可以放心了。以后再给苏珊写信，只要在签名的同时，再附上数字证书就行了。</p>
+<p>１３．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080913.png" alt="img"></p>
+<p>苏珊收信后，用CA的公钥解开数字证书，就可以拿到鲍勃真实的公钥了，然后就能证明”数字签名”是否真的是鲍勃签的。</p>
+<p>１４．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080914.jpg" alt="img"></p>
+<p>下面，我们看一个应用”数字证书”的实例：https协议。这个协议主要用于网页加密。</p>
+<p>１５．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080915.png" alt="img"></p>
+<p>首先，客户端向服务器发送加密访问请求</p>
+<p>１６．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080916.png" alt="img"></p>
+<p>服务器用自己的私钥加密网页后，连同ＣＡ的数字证书，一起发送给客户端</p>
+<p>１７．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080917.png" alt="img"></p>
+<p>客户端浏览器的＂证书管理器＂，有＂受信任的根证书颁发机构＂列表．客户端会根据这张列表，查看解开数字证书的公钥是否在列表中</p>
+<p>１８．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080918.png" alt="img"></p>
+<p>这是发生了数字证书被冒用了，证书登记的网站信息和你正在浏览的网址不一致．</p>
+<p>１９．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080919.jpg" alt="img"></p>
+<p>这是说明证书不是受信任的机构颁发的．</p>
+<p>２０．</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201108/bg2011080920.png" alt="img"></p>
+<p>如果数字证书是可靠的，客户端就可以使用证书中的服务器公钥，对信息进行加密，然后与服务器交换加密信息。</p>
+<p>阮一峰原文网址：<a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/密码学入门/" rel="tag"># 密码学入门</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/20/23_比特币中的加密算法/" rel="next" title="比特币中的加密算法">
+                <i class="fa fa-chevron-left"></i> 比特币中的加密算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Ricky.jpg"
+                alt="星星周" />
+            
+              <p class="site-author-name" itemprop="name">星星周</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tages/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/RickeeyZhou" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/rickeey_chow" target="_blank" title="Instagram"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.linkedin.com/in/于敬-周-248518104/" target="_blank" title="Linkedin"><i class="fa fa-fw fa-linkedin"></i>Linkedin</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/9ee688f94bd1" target="_blank" title="简书"><i class="fa fa-fw fa-fort-awesome"></i>简书</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">星星周</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+</html>

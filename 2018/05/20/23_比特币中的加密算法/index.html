@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|18:300,300italic,400,400italic,700,700italic|Permanent Marker:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=6.2.0" color="#222">
+
+
+  <link rel="manifest" href="/favicon.ico">
+
+
+  <meta name="msapplication-config" content="/favicon.ico" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="阅读要求：已经了解加密算法的分类，了解什么是非对称加密及密钥的概念，了解比特币的交易流程 在比特币我们的钱包地址，和我们自己保存的私钥是怎么来的？那是不是还有公钥呢？  没错，产生私钥的同时，的确产生了公钥，他们是成对存在． 其实钱包地址就是公钥另一种存在形式，怎么理解？ 公钥长这样：  0406CCAE7536386DA2C5ADD428B099C7658814CA837F94FADE365D0">
+<meta name="keywords" content="密码学入门 学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="比特币中的加密算法">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/23_比特币中的加密算法/index.html">
+<meta property="og:site_name" content="Rickeey&#39;s Blog">
+<meta property="og:description" content="阅读要求：已经了解加密算法的分类，了解什么是非对称加密及密钥的概念，了解比特币的交易流程 在比特币我们的钱包地址，和我们自己保存的私钥是怎么来的？那是不是还有公钥呢？  没错，产生私钥的同时，的确产生了公钥，他们是成对存在． 其实钱包地址就是公钥另一种存在形式，怎么理解？ 公钥长这样：  0406CCAE7536386DA2C5ADD428B099C7658814CA837F94FADE365D0">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/10649797-7bae9f423cb8a628?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10649797-ee40823f4a3769c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-20T14:50:57.529Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="比特币中的加密算法">
+<meta name="twitter:description" content="阅读要求：已经了解加密算法的分类，了解什么是非对称加密及密钥的概念，了解比特币的交易流程 在比特币我们的钱包地址，和我们自己保存的私钥是怎么来的？那是不是还有公钥呢？  没错，产生私钥的同时，的确产生了公钥，他们是成对存在． 其实钱包地址就是公钥另一种存在形式，怎么理解？ 公钥长这样：  0406CCAE7536386DA2C5ADD428B099C7658814CA837F94FADE365D0">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/10649797-7bae9f423cb8a628?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/20/23_比特币中的加密算法/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>比特币中的加密算法 | Rickeey's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rickeey's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tages/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/23_比特币中的加密算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="星星周">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Ricky.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickeey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">比特币中的加密算法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-20 22:33:00 / Modified: 22:50:57" itemprop="dateCreated datePublished" datetime="2018-05-20T22:33:00+08:00">2018-05-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/区块链/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/20/23_比特币中的加密算法/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/20/23_比特币中的加密算法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="阅读要求：已经了解加密算法的分类，了解什么是非对称加密及密钥的概念，了解比特币的交易流程"><a href="#阅读要求：已经了解加密算法的分类，了解什么是非对称加密及密钥的概念，了解比特币的交易流程" class="headerlink" title="阅读要求：已经了解加密算法的分类，了解什么是非对称加密及密钥的概念，了解比特币的交易流程"></a>阅读要求：已经了解加密算法的分类，了解什么是非对称加密及密钥的概念，了解比特币的交易流程</h2><blockquote>
+<p>在比特币我们的钱包地址，和我们自己保存的私钥是怎么来的？那是不是还有公钥呢？</p>
+</blockquote>
+<p>没错，产生私钥的同时，的确产生了公钥，他们是成对存在．</p>
+<p>其实钱包地址就是公钥另一种存在形式，怎么理解？</p>
+<p>公钥长这样：</p>
+<blockquote>
+<p>0406CCAE7536386DA2C5ADD428B099C7658814CA837F94FADE365D0EC6B1519385FF83EC5F2C0C8F016A32134589F7B9E97ACBFEFD2EF12A91FA622B38A1449EEB</p>
+</blockquote>
+<p>我们通常看到的钱包地址是这样的：</p>
+<blockquote>
+<p> 1QCXRuoxWo5Bya9NxHaVBArBQYhatHJrU7</p>
+</blockquote>
+<p>我们对公钥，分别进行了<code>ＳＨＡ２５６</code>和<code>ＲＩＰＥ１６０</code>和<code>ＢＡＳＥ５８</code>，也就是两次哈希散列加密，一次编码操作．</p>
+<p>得到钱包地址．</p>
+<p>总结流程：</p>
+<p>产生私钥－＞产生公钥－＞产生钱包地址</p>
+<p>比特币中私钥，公钥，钱包地址关系如下图：<br><img src="http://upload-images.jianshu.io/upload_images/10649797-7bae9f423cb8a628?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>我将从产生私钥到钱包地址的产生，分成９步：</p>
+<p>先上图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10649797-ee40823f4a3769c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="v2-75d938393614bf24b2b0f55ed553d7ba_r.jpg"></p>
+<h3 id="第一步：随机生成私钥"><a href="#第一步：随机生成私钥" class="headerlink" title="第一步：随机生成私钥"></a>第一步：随机生成私钥</h3><p>私钥是随机数，３２字节，范围：1 ~ 0xFFFF FFFF FFFF FFFF FFFF FFFF FFFF FFFE，那我们生成一个合法的私钥：</p>
+<blockquote>
+<p>8F72F6B29E6E225A36B68DFE333C7CE5E55D83249D3D2CD6332671FA445C4DD3</p>
+</blockquote>
+<h3 id="第二步：利用椭圆曲线加密（ECDSA）生成公钥"><a href="#第二步：利用椭圆曲线加密（ECDSA）生成公钥" class="headerlink" title="第二步：利用椭圆曲线加密（ＥＣＤＳＡ）生成公钥"></a>第二步：利用椭圆曲线加密（ＥＣＤＳＡ）生成公钥</h3><p>椭圆曲线加密算法（ＥＣＤＳＡ－ＳＥＣＰ２５６Ｋ１），目前无法被破解，由此我们生成非压缩形式的公钥，一共６6字节，字节被分为三个部分，１．标志位：0x04；２．32字节Ｘ坐标；３．32字节Ｙ坐标</p>
+<p>公钥Ｘ：</p>
+<blockquote>
+<p>06CCAE7536386DA2C5ADD428B099C7658814CA837F94FADE365D0EC6B1519385</p>
+</blockquote>
+<p>公钥Ｙ：</p>
+<blockquote>
+<p>FF83EC5F2C0C8F016A32134589F7B9E97ACBFEFD2EF12A91FA622B38A1449EEB</p>
+</blockquote>
+<p>标准公钥：</p>
+<blockquote>
+<p>0406CCAE7536386DA2C5ADD428B099C7658814CA837F94FADE365D0EC6B1519385FF83EC5F2C0C8F016A32134589F7B9E97ACBFEFD2EF12A91FA622B38A1449EEB</p>
+</blockquote>
+<h3 id="第三步：计算标准地址的SHA２５６哈希值"><a href="#第三步：计算标准地址的SHA２５６哈希值" class="headerlink" title="第三步：计算标准地址的ＳＨＡ２５６哈希值"></a>第三步：计算标准地址的ＳＨＡ２５６哈希值</h3><p>公钥第一次散列哈希，便于表达，我将哈希值记为Ｘ</p>
+<blockquote>
+<p>2572e5f4a8e77ddf5bb35b9e61c61f66455a4a24bcfd6cb190a8e8ff48fc097d</p>
+</blockquote>
+<h3 id="第四步：进一步计算RIPEMD－１６０"><a href="#第四步：进一步计算RIPEMD－１６０" class="headerlink" title="第四步：进一步计算ＲＩＰＥＭＤ－１６０"></a>第四步：进一步计算ＲＩＰＥＭＤ－１６０</h3><p>将Ｘ进行ＲＩＰＥＭＤ－１６０哈希计算，我们记为Ｙ</p>
+<blockquote>
+<p>0b14f003d63ab31aef5fedde2b504699547dd1f6</p>
+</blockquote>
+<h3 id="第五步：加入地址版本号（比特币主网版本号＂0x00＂）"><a href="#第五步：加入地址版本号（比特币主网版本号＂0x00＂）" class="headerlink" title="第五步：加入地址版本号（比特币主网版本号＂0x00＂）"></a>第五步：加入地址版本号（比特币主网版本号＂0x00＂）</h3><p>我们在Ｙ前面加上１６进制的0x00，记为Ｚ，如下：</p>
+<blockquote>
+<p> 869ac57b000b14f003d63ab31aef5fedde2b504699547dd1f6</p>
+</blockquote>
+<h3 id="第六步：计算SHA－２５６哈希值"><a href="#第六步：计算SHA－２５６哈希值" class="headerlink" title="第六步：计算ＳＨＡ－２５６哈希值"></a>第六步：计算ＳＨＡ－２５６哈希值</h3><p>将Ｚ再进行两次ＳＨＡ－２５６计算，得到哈希Ｐ</p>
+<blockquote>
+<p>ddc2270f93cc84cc6869dd373f3c340bbf5cb9a8f5559297cc9e5d947aab2536</p>
+</blockquote>
+<p>再来一次，这里就是Ｐ了</p>
+<blockquote>
+<p>869ac57b83ccf75ca9da8895823562fffb611e3c297d9c2d4612aeeb32850078</p>
+</blockquote>
+<h3 id="第七步：取得P的前４字节（８位１６进制）"><a href="#第七步：取得P的前４字节（８位１６进制）" class="headerlink" title="第七步：取得Ｐ的前４字节（８位１６进制）"></a>第七步：取得Ｐ的前４字节（８位１６进制）</h3><blockquote>
+<p>869ac57b</p>
+</blockquote>
+<h3 id="第八步：将取得的４字节添加到Z后面，作为校验码"><a href="#第八步：将取得的４字节添加到Z后面，作为校验码" class="headerlink" title="第八步：将取得的４字节添加到Ｚ后面，作为校验码"></a>第八步：将取得的４字节添加到Ｚ后面，作为校验码</h3><p>这也就是比特币钱包地址的１６进制形态了：</p>
+<blockquote>
+<p>000b14f003d63ab31aef5fedde2b504699547dd1f6869ac57b</p>
+</blockquote>
+<h3 id="第九步：用Base５８编码，变换地址格式，唯一可以反向推导的步骤"><a href="#第九步：用Base５８编码，变换地址格式，唯一可以反向推导的步骤" class="headerlink" title="第九步：用Ｂａｓｅ５８编码，变换地址格式，唯一可以反向推导的步骤"></a>第九步：用Ｂａｓｅ５８编码，变换地址格式，唯一可以反向推导的步骤</h3><p>对上一步结果进行Ｂａｓｅ５８编码：</p>
+<blockquote>
+<p>1QCXRuoxWo5Bya9NxHaVBArBQYhatHJrU7</p>
+</blockquote>
+<h3 id="思考：公钥理论上是可以推出私钥，但是非常困难，作为数字资产，我们肯定需要严谨，所以我们对公钥进行了散列处理，就得到我们所用的钱包地址，这注定是不可逆的，就保护了公钥和私钥的安全．"><a href="#思考：公钥理论上是可以推出私钥，但是非常困难，作为数字资产，我们肯定需要严谨，所以我们对公钥进行了散列处理，就得到我们所用的钱包地址，这注定是不可逆的，就保护了公钥和私钥的安全．" class="headerlink" title="思考：公钥理论上是可以推出私钥，但是非常困难，作为数字资产，我们肯定需要严谨，所以我们对公钥进行了散列处理，就得到我们所用的钱包地址，这注定是不可逆的，就保护了公钥和私钥的安全．"></a>思考：公钥理论上是可以推出私钥，但是非常困难，作为数字资产，我们肯定需要严谨，所以我们对公钥进行了散列处理，就得到我们所用的钱包地址，这注定是不可逆的，就保护了公钥和私钥的安全．</h3><h3 id="还想提一点，比特币除了生成钱包用到了SHA２５６，在挖矿时，也就是矿工处理加工交易信息时，同样也是用的SHA２５６．"><a href="#还想提一点，比特币除了生成钱包用到了SHA２５６，在挖矿时，也就是矿工处理加工交易信息时，同样也是用的SHA２５６．" class="headerlink" title="还想提一点，比特币除了生成钱包用到了ＳＨＡ２５６，在挖矿时，也就是矿工处理加工交易信息时，同样也是用的ＳＨＡ２５６．"></a>还想提一点，比特币除了生成钱包用到了ＳＨＡ２５６，在挖矿时，也就是矿工处理加工交易信息时，同样也是用的ＳＨＡ２５６．</h3>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/密码学入门-学习笔记/" rel="tag"># 密码学入门 学习笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/20/22_综述加密算法如何加密/" rel="next" title="综述加密算法是如何加密＿入门">
+                <i class="fa fa-chevron-left"></i> 综述加密算法是如何加密＿入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/20/24_数字签名是什么/" rel="prev" title="数字签名是什么？">
+                数字签名是什么？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Ricky.jpg"
+                alt="星星周" />
+            
+              <p class="site-author-name" itemprop="name">星星周</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tages/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/RickeeyZhou" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/rickeey_chow" target="_blank" title="Instagram"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.linkedin.com/in/于敬-周-248518104/" target="_blank" title="Linkedin"><i class="fa fa-fw fa-linkedin"></i>Linkedin</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/9ee688f94bd1" target="_blank" title="简书"><i class="fa fa-fw fa-fort-awesome"></i>简书</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#阅读要求：已经了解加密算法的分类，了解什么是非对称加密及密钥的概念，了解比特币的交易流程"><span class="nav-number">1.</span> <span class="nav-text">阅读要求：已经了解加密算法的分类，了解什么是非对称加密及密钥的概念，了解比特币的交易流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步：随机生成私钥"><span class="nav-number">1.1.</span> <span class="nav-text">第一步：随机生成私钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步：利用椭圆曲线加密（ECDSA）生成公钥"><span class="nav-number">1.2.</span> <span class="nav-text">第二步：利用椭圆曲线加密（ＥＣＤＳＡ）生成公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三步：计算标准地址的SHA２５６哈希值"><span class="nav-number">1.3.</span> <span class="nav-text">第三步：计算标准地址的ＳＨＡ２５６哈希值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四步：进一步计算RIPEMD－１６０"><span class="nav-number">1.4.</span> <span class="nav-text">第四步：进一步计算ＲＩＰＥＭＤ－１６０</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五步：加入地址版本号（比特币主网版本号＂0x00＂）"><span class="nav-number">1.5.</span> <span class="nav-text">第五步：加入地址版本号（比特币主网版本号＂0x00＂）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六步：计算SHA－２５６哈希值"><span class="nav-number">1.6.</span> <span class="nav-text">第六步：计算ＳＨＡ－２５６哈希值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七步：取得P的前４字节（８位１６进制）"><span class="nav-number">1.7.</span> <span class="nav-text">第七步：取得Ｐ的前４字节（８位１６进制）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八步：将取得的４字节添加到Z后面，作为校验码"><span class="nav-number">1.8.</span> <span class="nav-text">第八步：将取得的４字节添加到Ｚ后面，作为校验码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九步：用Base５８编码，变换地址格式，唯一可以反向推导的步骤"><span class="nav-number">1.9.</span> <span class="nav-text">第九步：用Ｂａｓｅ５８编码，变换地址格式，唯一可以反向推导的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考：公钥理论上是可以推出私钥，但是非常困难，作为数字资产，我们肯定需要严谨，所以我们对公钥进行了散列处理，就得到我们所用的钱包地址，这注定是不可逆的，就保护了公钥和私钥的安全．"><span class="nav-number">1.10.</span> <span class="nav-text">思考：公钥理论上是可以推出私钥，但是非常困难，作为数字资产，我们肯定需要严谨，所以我们对公钥进行了散列处理，就得到我们所用的钱包地址，这注定是不可逆的，就保护了公钥和私钥的安全．</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#还想提一点，比特币除了生成钱包用到了SHA２５６，在挖矿时，也就是矿工处理加工交易信息时，同样也是用的SHA２５６．"><span class="nav-number">1.11.</span> <span class="nav-text">还想提一点，比特币除了生成钱包用到了ＳＨＡ２５６，在挖矿时，也就是矿工处理加工交易信息时，同样也是用的ＳＨＡ２５６．</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">星星周</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+</html>

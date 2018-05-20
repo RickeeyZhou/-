@@ -152,7 +152,7 @@
 <meta property="og:site_name" content="Rickeey&#39;s Blog">
 <meta property="og:description" content="Hash散列原理(map的原理), 代码实现链表结构, 这也是go中map本质  map又名 hash表 优化后的数据结构 知识点:  数据结构的链表 hash散列算法 链表单位组成: 地址域, 数值域 代码构建 链表, 行为上和 map 一样  创建链表的包文件 1234package LinkNodesimport (&quot;fmt&quot;)var head *Nodevar curr *Node //">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-19T16:14:19.505Z">
+<meta property="og:updated_time" content="2018-05-19T16:16:47.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码学_链表的构成及Hash散列">
 <meta name="twitter:description" content="Hash散列原理(map的原理), 代码实现链表结构, 这也是go中map本质  map又名 hash表 优化后的数据结构 知识点:  数据结构的链表 hash散列算法 链表单位组成: 地址域, 数值域 代码构建 链表, 行为上和 map 一样  创建链表的包文件 1234package LinkNodesimport (&quot;fmt&quot;)var head *Nodevar curr *Node //">
@@ -395,7 +395,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-05-20 00:14:19" itemprop="dateModified" datetime="2018-05-20T00:14:19+08:00">2018-05-20</time>
+                <time title="Modified: 2018-05-20 00:16:47" itemprop="dateModified" datetime="2018-05-20T00:16:47+08:00">2018-05-20</time>
               
             
           </span>
@@ -513,10 +513,6 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 向数组添加键值对</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">AddKeyValue</span><span class="params">(k <span class="keyword">string</span>, v <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> pos = HashCode(k) <span class="comment">// 转换成 相应木桶下标</span></span><br><span class="line">	<span class="comment">//	var arr=CreateBulet() // 获得木桶数组</span></span><br><span class="line">	<span class="comment">//	CreateBulet() 初始化在主函数</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> head *LinkNodes.Node = bultArr[pos] <span class="comment">// 先进入 pos 下标的木桶位置, 并且定义一个头结点</span></span><br><span class="line">	LinkNodes.AddNode(k, v, head)           <span class="comment">// 向指定下标头结点 新增节点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取数据</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetValueByKey</span><span class="params">(k <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> pos = HashCode(k)</span><br><span class="line">	<span class="keyword">var</span> head *LinkNodes.Node = bultArr[pos]</span><br><span class="line">	<span class="comment">// 遍历头节点</span></span><br><span class="line">	LinkNodes.ShowNodes(head)</span><br><span class="line">	<span class="comment">// 查找对应下标的链表, pos值 == 节点的key值</span></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> head.Data.K==k &#123;</span><br><span class="line">			fmt.Println(head.Data)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			head=head.NextNode</span><br><span class="line">			<span class="keyword">if</span> head.NextNode==<span class="literal">nil</span>&#123;</span><br><span class="line">				<span class="comment">//break</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main函数</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"密码学/myhashmap/Hash_Mp"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	Hash_Mp.CreateBulet()　<span class="comment">//初始化数组,同时创建了头节点</span></span><br><span class="line">	<span class="comment">//Hash_Mp.AddKeyValue("abc","hello")</span></span><br><span class="line">	Hash_Mp.AddKeyValue(<span class="string">"bcd"</span>,<span class="string">"world"</span>)</span><br><span class="line"></span><br><span class="line">	Hash_Mp.GetValueByKey(<span class="string">"bcd"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>预习：　共识算法　＋　零知识证明</p>
-<p>以太坊　１　ｗｅｅｋ</p>
-<p>公链　１　ｗｅｅｋ</p>
-<p>超级账本　　２　ｗｅｅｋ</p>
 
       
     </div>
@@ -559,6 +555,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/19/17_加密分类/" rel="prev" title="加密算法的分类">
+                加密算法的分类 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -643,7 +643,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -719,7 +719,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

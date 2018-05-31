@@ -144,25 +144,25 @@
 
 
 
-  <meta name="description" content="安装zookeeper 首先安装JDK环境  官网下载zookeeper源码  解压到/opt目录下, 解释下, opt和usr同级, 像数据库等大型文件项目, 放到opt下  解压命令tar -zvxf zookeeper-3.4.12.tar.gz  配置环境变量  命令行输入:  sudo gedit /etc/profile 增加: export ZOOKEEPER_HOME=/opt/z">
-<meta name="keywords" content="分布式">
+  <meta name="description" content="说在前面，在原来的中心化服务器中，我们不用考虑一致性和数据安全，中心化不用考虑一致性，数据安全完全基于强大的硬件稳定，软件上我们也不用多考虑。但是巨大瓶颈是容量和性能 由此产生分布式系统的设计，首要考虑的已不再是硬件，而是数据安全，首要体现就是一致性的问题。 注意作为分布式系统，根据处理不同的问题，采取不同分布方式；将大数据拆分分散在不同的服务器，提高容量；将数据处理和数据储存分离，提高了性能，核">
+<meta name="keywords" content="分布式系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装zookeeper">
-<meta property="og:url" content="http://yoursite.com/2018/05/14/14_安装zookeeper/index.html">
+<meta property="og:title" content="分布式系统中的专有名词">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/26_分布式系统中的专业名词/index.html">
 <meta property="og:site_name" content="Rickeey&#39;s Blog">
-<meta property="og:description" content="安装zookeeper 首先安装JDK环境  官网下载zookeeper源码  解压到/opt目录下, 解释下, opt和usr同级, 像数据库等大型文件项目, 放到opt下  解压命令tar -zvxf zookeeper-3.4.12.tar.gz  配置环境变量  命令行输入:  sudo gedit /etc/profile 增加: export ZOOKEEPER_HOME=/opt/z">
+<meta property="og:description" content="说在前面，在原来的中心化服务器中，我们不用考虑一致性和数据安全，中心化不用考虑一致性，数据安全完全基于强大的硬件稳定，软件上我们也不用多考虑。但是巨大瓶颈是容量和性能 由此产生分布式系统的设计，首要考虑的已不再是硬件，而是数据安全，首要体现就是一致性的问题。 注意作为分布式系统，根据处理不同的问题，采取不同分布方式；将大数据拆分分散在不同的服务器，提高容量；将数据处理和数据储存分离，提高了性能，核">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-15T01:42:00.379Z">
+<meta property="og:updated_time" content="2018-05-31T14:41:11.326Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装zookeeper">
-<meta name="twitter:description" content="安装zookeeper 首先安装JDK环境  官网下载zookeeper源码  解压到/opt目录下, 解释下, opt和usr同级, 像数据库等大型文件项目, 放到opt下  解压命令tar -zvxf zookeeper-3.4.12.tar.gz  配置环境变量  命令行输入:  sudo gedit /etc/profile 增加: export ZOOKEEPER_HOME=/opt/z">
+<meta name="twitter:title" content="分布式系统中的专有名词">
+<meta name="twitter:description" content="说在前面，在原来的中心化服务器中，我们不用考虑一致性和数据安全，中心化不用考虑一致性，数据安全完全基于强大的硬件稳定，软件上我们也不用多考虑。但是巨大瓶颈是容量和性能 由此产生分布式系统的设计，首要考虑的已不再是硬件，而是数据安全，首要体现就是一致性的问题。 注意作为分布式系统，根据处理不同的问题，采取不同分布方式；将大数据拆分分散在不同的服务器，提高容量；将数据处理和数据储存分离，提高了性能，核">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/14/14_安装zookeeper/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/31/26_分布式系统中的专业名词/"/>
 
 
 
@@ -172,7 +172,7 @@
   };
 </script>
 
-  <title>安装zookeeper | Rickeey's Blog</title>
+  <title>分布式系统中的专有名词 | Rickeey's Blog</title>
   
 
 
@@ -336,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/14/14_安装zookeeper/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/26_分布式系统中的专业名词/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="星星周">
@@ -353,7 +353,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">安装zookeeper
+          <h1 class="post-title" itemprop="name headline">分布式系统中的专有名词
               
             
           </h1>
@@ -378,24 +378,12 @@
                 
               
 
-              <time title="Created: 2018-05-14 22:05:00" itemprop="dateCreated datePublished" datetime="2018-05-14T22:05:00+08:00">2018-05-14</time>
+              <time title="Created: 2018-05-31 22:41:00 / Modified: 22:41:11" itemprop="dateCreated datePublished" datetime="2018-05-31T22:41:00+08:00">2018-05-31</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-05-15 09:42:00" itemprop="dateModified" datetime="2018-05-15T09:42:00+08:00">2018-05-15</time>
               
             
           </span>
@@ -412,7 +400,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/区块链-概念/" itemprop="url" rel="index"><span itemprop="name">区块链 概念</span></a></span>
 
                 
                 
@@ -427,8 +415,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/14/14_安装zookeeper/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/14/14_安装zookeeper/" itemprop="commentsCount"></span>
+                <a href="/2018/05/31/26_分布式系统中的专业名词/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/31/26_分布式系统中的专业名词/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -464,47 +452,34 @@
       
 
       
-        <h2 id="安装zookeeper"><a href="#安装zookeeper" class="headerlink" title="安装zookeeper"></a>安装zookeeper</h2><ul>
-<li><p>首先安装JDK环境</p>
-</li>
-<li><p>官网下载zookeeper源码</p>
-</li>
-<li><p>解压到<code>/opt</code>目录下, 解释下, <code>opt</code>和<code>usr</code>同级, 像数据库等大型文件项目, 放到<code>opt</code>下</p>
-</li>
-<li><p>解压命令<code>tar -zvxf zookeeper-3.4.12.tar.gz</code></p>
-</li>
-<li><p>配置环境变量</p>
-<blockquote>
-<p>命令行输入:  sudo gedit /etc/profile</p>
-<p>增加: export ZOOKEEPER_HOME=/opt/zookeeper-3.4.12</p>
-<p>增加: export PATH=”$PATH:/opt/zookeeper-3.4.12/bin”</p>
-<p>命令行输入: source /etc/profile</p>
-</blockquote>
-<ul>
-<li><p>修改 <code>安装目录/conf</code>下 ,修改zoo.cfg</p>
-<blockquote>
-<p>dataDIr=/opt/zookeeper-3.4.12/data</p>
-<p>注: 没有data文件夹, 就先创建一个<code>data</code>文件夹</p>
-</blockquote>
-</li>
+        <p>说在前面，在原来的中心化服务器中，我们不用考虑<strong>一致性</strong>和<strong>数据安全</strong>，中心化不用考虑一致性，数据安全完全基于强大的<strong>硬件</strong>稳定，软件上我们也不用多考虑。但是巨大瓶颈是<strong>容量</strong>和<strong>性能</strong></p>
+<p>由此产生分布式系统的设计，首要考虑的已不再是硬件，而是数据安全，首要体现就是一致性的问题。</p>
+<p>注意作为分布式系统，根据处理不同的问题，采取不同分布方式；将大数据拆分分散在不同的服务器，提高容量；将<em>数据处理</em>和<em>数据储存</em>分离，提高了性能，核心思想是<strong>一台高性能高吞吐量的服务器</strong>。所有服务器都储存同样的数据，提高了<strong>绝对数据安全</strong>，在比特币中，就是如同这样模型的分布式账本，达成了可信任的去中心化系统，核心思想是<strong>可信任防攻击的数据库服务器</strong></p>
+<p>进程：1 CPU 1时刻 只能执行 1进程，执行一个程序进程可能存在多个线程，火箭组装工厂如同进程，火箭如同CPU，播放器如同进程，如同一个服务</p>
+<h2 id="线程："><a href="#线程：" class="headerlink" title="线程："></a>线程：</h2><p>操作系统最小运算调度单位，存在并发和并发的线程，并发是不同CPU下，并行是高速切换。如同卫星工厂中的部门；播放器中的播放，暂停如同线程。</p>
+<h2 id="并发："><a href="#并发：" class="headerlink" title="并发："></a>并发：</h2><p>线程之间的行为，高速切换。cpu的处理被分割成切片，线程之间可以抢占CPU资源</p>
+<h2 id="并行："><a href="#并行：" class="headerlink" title="并行："></a>并行：</h2><p>同时发生很多事。其实并行是并发的子集，通过双核完成</p>
+<p>辨析：并发是一种事务处理的策略，通过分散到极短时间片，让两件事情在交替进行，达到两件事情表现出同时处理的效果，在计算机上并发的两件事，都会即时得到反馈，我之所以说“即时”其实是不准确的，反馈时间绝对比单任务长，只是本来处理就短，并发处理，增长点时间，我们依然感觉不到。</p>
+<p>一男二女是并发，二男一女是并行</p>
+<h2 id="锁："><a href="#锁：" class="headerlink" title="锁："></a>锁：</h2><p>多个线程在同一块内存空间下，为了防止线程冲突，不允许线程共用内存空间</p>
+<h2 id="集群："><a href="#集群：" class="headerlink" title="集群："></a>集群：</h2><ul>
+<li>高可用性集群：一台服务器宕机，不会影响其他服务器的运行</li>
+<li>负载均衡集群：通过前段负载均衡起，将任务分发到后端。从而达到系统的高可用和高性能</li>
+<li>高性能计算集群</li>
+<li>网格计算：网络和传统集群的区别更像计算公共设施，而不是独立计算机。网格之间都是独立工作，资源可以共享</li>
 </ul>
-</li>
-</ul>
-<h2 id=""><a href="#" class="headerlink" title="　"></a>　</h2><h2 id="建立分布式系统"><a href="#建立分布式系统" class="headerlink" title="建立分布式系统"></a>建立分布式系统</h2><h3 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h3><p>理解网络编程中json的功能</p>
-<blockquote>
-<p>在网络编程中, 都是通过<code>字符串</code>的形式传输,所以本地和网络节点通信, 必须先进行格式转换的步骤</p>
-</blockquote>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	First <span class="keyword">string</span> <span class="string">`json:"sb"`</span><span class="comment">// </span></span><br><span class="line">	Last  <span class="keyword">string</span> <span class="string">`json:"-"`</span> <span class="comment">// </span></span><br><span class="line">	Age   <span class="keyword">int</span>    <span class="string">`json:"wisdom score"`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// `json: ...`格式:定义属性在网络传输中的格式</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	p1 := person&#123;<span class="string">"James"</span>, <span class="string">"Bond"</span>, <span class="number">20</span>&#125;</span><br><span class="line">	bs, _ := json.Marshal(p1)   <span class="comment">// 转成 字节数组</span></span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(bs))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>输出结果: {“sb”:”James”,”wisdom score”:20}</p>
-</blockquote>
-<p>再说一点: 如果从网络提取到本地. 定义<code>json: &quot;..&quot;</code>部分的功能是, 自动匹配<code>网络字符串内容</code>中相同字段部分.</p>
-<h2 id="zookeeper基本操作"><a href="#zookeeper基本操作" class="headerlink" title="zookeeper基本操作"></a>zookeeper基本操作</h2><p>进入<code>zookeeper</code>安装目录的<code>bin</code>目录下</p>
-<p>启动服务 : sudo ./zkServer.sh start </p>
-<p>查看ZK服务状态: sudo ./zkServer.sh status</p>
-<p>停止ZK服务:  sudo ./zkServer.sh stop</p>
-<p>连接服务器: sudo ./zkCli.sh  </p>
-<p>查看节点: zkCli status </p>
+<h2 id="Kafka："><a href="#Kafka：" class="headerlink" title="Kafka："></a>Kafka：</h2><p>管理数据的框架，过去业务层，都是单独存储自己的数据，业务之间调度，数据冗余是小事，错综复杂的业务逻辑，保持一致性相当困难</p>
+<h2 id="哈希取模："><a href="#哈希取模：" class="headerlink" title="哈希取模："></a>哈希取模：</h2><p>服务器集群，痛点是查询数据很麻烦，数据映射地址的表，过去使用映射表，更新工作巨大。用散列哈希的公式，常常是取模，让数据能平均散列到不同的服务器地址，从此不需要暴力查找，只需要计算公式，问题是增加或减少服务器，都会影响分母，一改全改。十分不方便</p>
+<h2 id="一致性哈希："><a href="#一致性哈希：" class="headerlink" title="一致性哈希："></a>一致性哈希：</h2><p>在上述散列哈希的基础上，固定一个分母，也就是固定一个巨大的数量的木桶（分母）。构成一个环，一旦发生宕机，就往后寻找有效服务器，由查到的第一个有效服务器，临时由他代替处理数据。为了减少查询时间，可以采取查询策略，如：每个桶都记录1,2,4号位</p>
+<h2 id="数据库分片："><a href="#数据库分片：" class="headerlink" title="数据库分片："></a>数据库分片：</h2><p>水平分片（也叫水平分库）指的是将整体存储在单个数据库中的数据，通过某种策略分摊到多个表结构与其相同的数据库中，这样每个数据库中的数据量就会相对减少很多，并且可以部署在不同物理服务器上，理论上能够实现数据库的无限横向拓展。所以水平分片是数据库性能问题的最终解决方案。</p>
+<h2 id="全局ID："><a href="#全局ID：" class="headerlink" title="全局ID："></a>全局ID：</h2><p>用最少的约束保证一致性，全局唯一，单调递增。功能：防止冲突，</p>
+<h2 id="UUID："><a href="#UUID：" class="headerlink" title="UUID："></a>UUID：</h2><p>通用唯一识别码，大概率上是不会重复的</p>
+<h2 id="高可用设计："><a href="#高可用设计：" class="headerlink" title="高可用设计："></a>高可用设计：</h2><h2 id="热备份："><a href="#热备份：" class="headerlink" title="热备份："></a>热备份：</h2><p>在系统工作状态下备份数据</p>
+<h2 id="心跳检测："><a href="#心跳检测：" class="headerlink" title="心跳检测："></a>心跳检测：</h2><p>服务器之间，确保对方正常工作的机制</p>
+<h2 id="CAP理论："><a href="#CAP理论：" class="headerlink" title="CAP理论："></a>CAP理论：</h2><p>C一致性 ；A可用性；P分区容忍性</p>
+<h2 id="负载均衡："><a href="#负载均衡：" class="headerlink" title="负载均衡："></a>负载均衡：</h2><p>服务器工作分为，响应前端请求，后端处理数据，一般通过前端负载均衡器，分担工作。通过一致性哈希平衡数据的分布，和减少查询难度</p>
+<h2 id="硬件异常："><a href="#硬件异常：" class="headerlink" title="硬件异常："></a>硬件异常：</h2><p>简称电脑坏了，一般都是电源是最脆弱的</p>
+<h2 id="数据拆分："><a href="#数据拆分：" class="headerlink" title="数据拆分："></a>数据拆分：</h2><p>将大包数据拆分储存在不同的数据库中。</p>
 
       
     </div>
@@ -525,7 +500,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/分布式/" rel="tag"># 分布式</a>
+            <a href="/tags/分布式系统/" rel="tag"># 分布式系统</a>
           
         </div>
       
@@ -538,8 +513,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/14/13_项目名字： Super dictionary/" rel="next" title="通过新云链理解DAPP">
-                <i class="fa fa-chevron-left"></i> 通过新云链理解DAPP
+              <a href="/2018/05/31/27_浅谈RAFT共识算法/" rel="next" title="共识算法-RAFT">
+                <i class="fa fa-chevron-left"></i> 共识算法-RAFT
               </a>
             
           </div>
@@ -547,10 +522,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/14/15_炒币感悟/" rel="prev" title="炒币感悟">
-                炒币感悟 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -781,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装zookeeper"><span class="nav-number">1.</span> <span class="nav-text">安装zookeeper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">　</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立分布式系统"><span class="nav-number">3.</span> <span class="nav-text">建立分布式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提前准备"><span class="nav-number">3.1.</span> <span class="nav-text">提前准备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zookeeper基本操作"><span class="nav-number">4.</span> <span class="nav-text">zookeeper基本操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程："><span class="nav-number">1.</span> <span class="nav-text">线程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发："><span class="nav-number">2.</span> <span class="nav-text">并发：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并行："><span class="nav-number">3.</span> <span class="nav-text">并行：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁："><span class="nav-number">4.</span> <span class="nav-text">锁：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群："><span class="nav-number">5.</span> <span class="nav-text">集群：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka："><span class="nav-number">6.</span> <span class="nav-text">Kafka：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希取模："><span class="nav-number">7.</span> <span class="nav-text">哈希取模：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一致性哈希："><span class="nav-number">8.</span> <span class="nav-text">一致性哈希：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库分片："><span class="nav-number">9.</span> <span class="nav-text">数据库分片：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局ID："><span class="nav-number">10.</span> <span class="nav-text">全局ID：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UUID："><span class="nav-number">11.</span> <span class="nav-text">UUID：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用设计："><span class="nav-number">12.</span> <span class="nav-text">高可用设计：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热备份："><span class="nav-number">13.</span> <span class="nav-text">热备份：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#心跳检测："><span class="nav-number">14.</span> <span class="nav-text">心跳检测：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CAP理论："><span class="nav-number">15.</span> <span class="nav-text">CAP理论：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#负载均衡："><span class="nav-number">16.</span> <span class="nav-text">负载均衡：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件异常："><span class="nav-number">17.</span> <span class="nav-text">硬件异常：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据拆分："><span class="nav-number">18.</span> <span class="nav-text">数据拆分：</span></a></li></ol></div>
             
 
           </div>

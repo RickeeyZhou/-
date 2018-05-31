@@ -144,25 +144,25 @@
 
 
 
-  <meta name="description" content="安装zookeeper 首先安装JDK环境  官网下载zookeeper源码  解压到/opt目录下, 解释下, opt和usr同级, 像数据库等大型文件项目, 放到opt下  解压命令tar -zvxf zookeeper-3.4.12.tar.gz  配置环境变量  命令行输入:  sudo gedit /etc/profile 增加: export ZOOKEEPER_HOME=/opt/z">
-<meta name="keywords" content="分布式">
+  <meta name="description" content="分布式系统和一致性这篇文章我们谈及分布式系统的基本概念，分布式中一致性，还有共识算法 如果对网络编程，分布式系统已经有了解，会非常有助于理解一致性和共识算法的概念 分布式系统在网络世界中，存在用户/服务器的连接，用户/用户的连接，服务器/服务器的连接 我们最常见也就是用户/服务器的方式了，如web服务器 网络的设计结构  第一层：用户表示层，浏览器页面的显示，涉及：html，xml  第二层：应用">
+<meta name="keywords" content="分布式系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装zookeeper">
-<meta property="og:url" content="http://yoursite.com/2018/05/14/14_安装zookeeper/index.html">
+<meta property="og:title" content="浅谈分布式系统一致性和共识算法">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/25_浅谈分布式系统/index.html">
 <meta property="og:site_name" content="Rickeey&#39;s Blog">
-<meta property="og:description" content="安装zookeeper 首先安装JDK环境  官网下载zookeeper源码  解压到/opt目录下, 解释下, opt和usr同级, 像数据库等大型文件项目, 放到opt下  解压命令tar -zvxf zookeeper-3.4.12.tar.gz  配置环境变量  命令行输入:  sudo gedit /etc/profile 增加: export ZOOKEEPER_HOME=/opt/z">
+<meta property="og:description" content="分布式系统和一致性这篇文章我们谈及分布式系统的基本概念，分布式中一致性，还有共识算法 如果对网络编程，分布式系统已经有了解，会非常有助于理解一致性和共识算法的概念 分布式系统在网络世界中，存在用户/服务器的连接，用户/用户的连接，服务器/服务器的连接 我们最常见也就是用户/服务器的方式了，如web服务器 网络的设计结构  第一层：用户表示层，浏览器页面的显示，涉及：html，xml  第二层：应用">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-15T01:42:00.379Z">
+<meta property="og:updated_time" content="2018-05-31T14:39:39.714Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装zookeeper">
-<meta name="twitter:description" content="安装zookeeper 首先安装JDK环境  官网下载zookeeper源码  解压到/opt目录下, 解释下, opt和usr同级, 像数据库等大型文件项目, 放到opt下  解压命令tar -zvxf zookeeper-3.4.12.tar.gz  配置环境变量  命令行输入:  sudo gedit /etc/profile 增加: export ZOOKEEPER_HOME=/opt/z">
+<meta name="twitter:title" content="浅谈分布式系统一致性和共识算法">
+<meta name="twitter:description" content="分布式系统和一致性这篇文章我们谈及分布式系统的基本概念，分布式中一致性，还有共识算法 如果对网络编程，分布式系统已经有了解，会非常有助于理解一致性和共识算法的概念 分布式系统在网络世界中，存在用户/服务器的连接，用户/用户的连接，服务器/服务器的连接 我们最常见也就是用户/服务器的方式了，如web服务器 网络的设计结构  第一层：用户表示层，浏览器页面的显示，涉及：html，xml  第二层：应用">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/14/14_安装zookeeper/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/31/25_浅谈分布式系统/"/>
 
 
 
@@ -172,7 +172,7 @@
   };
 </script>
 
-  <title>安装zookeeper | Rickeey's Blog</title>
+  <title>浅谈分布式系统一致性和共识算法 | Rickeey's Blog</title>
   
 
 
@@ -336,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/14/14_安装zookeeper/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/25_浅谈分布式系统/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="星星周">
@@ -353,7 +353,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">安装zookeeper
+          <h1 class="post-title" itemprop="name headline">浅谈分布式系统一致性和共识算法
               
             
           </h1>
@@ -378,24 +378,12 @@
                 
               
 
-              <time title="Created: 2018-05-14 22:05:00" itemprop="dateCreated datePublished" datetime="2018-05-14T22:05:00+08:00">2018-05-14</time>
+              <time title="Created: 2018-05-31 22:33:00 / Modified: 22:39:39" itemprop="dateCreated datePublished" datetime="2018-05-31T22:33:00+08:00">2018-05-31</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-05-15 09:42:00" itemprop="dateModified" datetime="2018-05-15T09:42:00+08:00">2018-05-15</time>
               
             
           </span>
@@ -412,7 +400,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/区块链/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a></span>
 
                 
                 
@@ -427,8 +415,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/14/14_安装zookeeper/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/14/14_安装zookeeper/" itemprop="commentsCount"></span>
+                <a href="/2018/05/31/25_浅谈分布式系统/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/31/25_浅谈分布式系统/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -464,47 +452,46 @@
       
 
       
-        <h2 id="安装zookeeper"><a href="#安装zookeeper" class="headerlink" title="安装zookeeper"></a>安装zookeeper</h2><ul>
-<li><p>首先安装JDK环境</p>
-</li>
-<li><p>官网下载zookeeper源码</p>
-</li>
-<li><p>解压到<code>/opt</code>目录下, 解释下, <code>opt</code>和<code>usr</code>同级, 像数据库等大型文件项目, 放到<code>opt</code>下</p>
-</li>
-<li><p>解压命令<code>tar -zvxf zookeeper-3.4.12.tar.gz</code></p>
-</li>
-<li><p>配置环境变量</p>
-<blockquote>
-<p>命令行输入:  sudo gedit /etc/profile</p>
-<p>增加: export ZOOKEEPER_HOME=/opt/zookeeper-3.4.12</p>
-<p>增加: export PATH=”$PATH:/opt/zookeeper-3.4.12/bin”</p>
-<p>命令行输入: source /etc/profile</p>
-</blockquote>
+        <h2 id="分布式系统和一致性"><a href="#分布式系统和一致性" class="headerlink" title="分布式系统和一致性"></a>分布式系统和一致性</h2><p>这篇文章我们谈及<code>分布式系统</code>的基本概念，分布式中<code>一致性</code>，还有<code>共识算法</code></p>
+<p>如果对网络编程，分布式系统已经有了解，会非常有助于理解一致性和共识算法的概念</p>
+<h3 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h3><p>在网络世界中，存在用户/服务器的连接，用户/用户的连接，服务器/服务器的连接</p>
+<p>我们最常见也就是用户/服务器的方式了，如web服务器</p>
+<p>网络的设计结构</p>
 <ul>
-<li><p>修改 <code>安装目录/conf</code>下 ,修改zoo.cfg</p>
-<blockquote>
-<p>dataDIr=/opt/zookeeper-3.4.12/data</p>
-<p>注: 没有data文件夹, 就先创建一个<code>data</code>文件夹</p>
-</blockquote>
-</li>
+<li>第一层：用户表示层，浏览器页面的显示，涉及：html，xml </li>
+<li>第二层：应用层，客户端，服务器的代码，称为应用服务层，如web服务（HTTP）</li>
+<li>第三层：中间层，转换应用层代码，程序员在设计程序时，不用担心不同的操作系统和接口，代码跨平台。标准化的接口和协议</li>
+<li>第四层：通信协议，规定了传送数据的接口和方式。如：TCP/IP</li>
+<li>第五层：操作系统</li>
+<li>第六层：硬件平台</li>
 </ul>
-</li>
+<p>在C/S的服务架构中，Srever一直是中心化的设置，在储存、性能上马上遇到了瓶颈。随后有了分布式的系统架构。有两种常用设计：</p>
+<ul>
+<li>提高系统容量，垂直增大容量或者拆分业务，构建分布式架构</li>
+<li>提高可用性，防止单点故障。所有的服务器保持高一致性，区块链就是这种设计</li>
 </ul>
-<h2 id=""><a href="#" class="headerlink" title="　"></a>　</h2><h2 id="建立分布式系统"><a href="#建立分布式系统" class="headerlink" title="建立分布式系统"></a>建立分布式系统</h2><h3 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h3><p>理解网络编程中json的功能</p>
+<p>优点：模块化，允许服务重用度高</p>
+<h3 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h3><p>大前提：网络基本可靠，在网络不可靠的情况下，很难达成一致。</p>
+<p>在分布式系统中，最难解决的就是一致性的问题。其实衡量分布式系统有三个指标，在Eric Brewer等大佬提出了，CAP理论。</p>
 <blockquote>
-<p>在网络编程中, 都是通过<code>字符串</code>的形式传输,所以本地和网络节点通信, 必须先进行格式转换的步骤</p>
+<p><strong>一致性（Consistency）</strong>:所有节点在同一时刻能够看到同样的数据，也即“强一致性”；<br><strong>可用性（Availability）</strong>：确保每个请求都可以收到确定其是否成功的响应；<br><strong>分区容忍性（Partition tolerance）</strong>:因为网络故障导致的系统分区不影响系统正常运行。</p>
 </blockquote>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	First <span class="keyword">string</span> <span class="string">`json:"sb"`</span><span class="comment">// </span></span><br><span class="line">	Last  <span class="keyword">string</span> <span class="string">`json:"-"`</span> <span class="comment">// </span></span><br><span class="line">	Age   <span class="keyword">int</span>    <span class="string">`json:"wisdom score"`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// `json: ...`格式:定义属性在网络传输中的格式</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	p1 := person&#123;<span class="string">"James"</span>, <span class="string">"Bond"</span>, <span class="number">20</span>&#125;</span><br><span class="line">	bs, _ := json.Marshal(p1)   <span class="comment">// 转成 字节数组</span></span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(bs))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>输出结果: {“sb”:”James”,”wisdom score”:20}</p>
-</blockquote>
-<p>再说一点: 如果从网络提取到本地. 定义<code>json: &quot;..&quot;</code>部分的功能是, 自动匹配<code>网络字符串内容</code>中相同字段部分.</p>
-<h2 id="zookeeper基本操作"><a href="#zookeeper基本操作" class="headerlink" title="zookeeper基本操作"></a>zookeeper基本操作</h2><p>进入<code>zookeeper</code>安装目录的<code>bin</code>目录下</p>
-<p>启动服务 : sudo ./zkServer.sh start </p>
-<p>查看ZK服务状态: sudo ./zkServer.sh status</p>
-<p>停止ZK服务:  sudo ./zkServer.sh stop</p>
-<p>连接服务器: sudo ./zkCli.sh  </p>
-<p>查看节点: zkCli status </p>
+<p>一个分布式只能同时满足两个，不可能同时满足，这里我们讨论的是同步分布式系统。</p>
+<p>因为有个叫做FLP定理，描述异步分布式系统，不存在达成一致性的共识算法，这里我也就不提了。</p>
+<p>这三个属性用来衡量一个分布式系统的性能指标：</p>
+<p>弱化一致性：</p>
+<p>常常用于实时性要求不高的场景，不要求随时同步，具有高可用性，也就是速度块，如：静态页面；实时性不高的数据库</p>
+<p>弱化可用性：保持高一致性，使用场景如银行ATM取钱，相关算法：Paxos，Raft</p>
+<p>弱化分区容忍性：通过双通道，是网络稳定。</p>
+<h3 id="共识算法"><a href="#共识算法" class="headerlink" title="共识算法"></a>共识算法</h3><p>为了解决一致性问题，科学家们想了很多方法</p>
+<p>在几个世纪以前，虽然没有计算机，不存在分布式系统一致性的问题，但是城邦之间通信，为了达成一致，也是什么困难的一件，所以我们可以认为城邦之间达成一致，就是一致性问题的现实版</p>
+<p>如果说真要解决实际问题，不光要考虑用什么方法传送数据达成共识。还要考虑通信中断，节点作恶，更可怕的是作恶节点还达成一致。遇到这样的情况，有什么算法在节点作恶的情况下，依然能达成一致么？</p>
+<p>答案是肯定的，所谓的PBFT拜占庭容错算法，就是解决这类问题。如今，中本聪在吸收了PBFT后，创造了POW工作量证明算法。</p>
+<p>共识算法分分类</p>
+<ul>
+<li>拜占庭问题解决方案：PBFT  POW  DBFT</li>
+<li>非拜占庭问题解决方案：RAFT  PAXOS</li>
+</ul>
 
       
     </div>
@@ -525,7 +512,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/分布式/" rel="tag"># 分布式</a>
+            <a href="/tags/分布式系统/" rel="tag"># 分布式系统</a>
           
         </div>
       
@@ -538,8 +525,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/14/13_项目名字： Super dictionary/" rel="next" title="通过新云链理解DAPP">
-                <i class="fa fa-chevron-left"></i> 通过新云链理解DAPP
+              <a href="/2018/05/20/24_数字签名是什么/" rel="next" title="数字签名是什么？">
+                <i class="fa fa-chevron-left"></i> 数字签名是什么？
               </a>
             
           </div>
@@ -548,8 +535,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/14/15_炒币感悟/" rel="prev" title="炒币感悟">
-                炒币感悟 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/31/27_浅谈RAFT共识算法/" rel="prev" title="共识算法-RAFT">
+                共识算法-RAFT <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -781,7 +768,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装zookeeper"><span class="nav-number">1.</span> <span class="nav-text">安装zookeeper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">　</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立分布式系统"><span class="nav-number">3.</span> <span class="nav-text">建立分布式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提前准备"><span class="nav-number">3.1.</span> <span class="nav-text">提前准备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zookeeper基本操作"><span class="nav-number">4.</span> <span class="nav-text">zookeeper基本操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式系统和一致性"><span class="nav-number">1.</span> <span class="nav-text">分布式系统和一致性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式系统"><span class="nav-number">1.1.</span> <span class="nav-text">分布式系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一致性"><span class="nav-number">1.2.</span> <span class="nav-text">一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共识算法"><span class="nav-number">1.3.</span> <span class="nav-text">共识算法</span></a></li></ol></li></ol></div>
             
 
           </div>

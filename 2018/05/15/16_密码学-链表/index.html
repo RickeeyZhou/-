@@ -152,7 +152,7 @@
 <meta property="og:site_name" content="Rickeey&#39;s Blog">
 <meta property="og:description" content="Hash散列原理(map的原理), 代码实现链表结构, 这也是go中map本质  map又名 hash表 优化后的数据结构 知识点:  数据结构的链表 hash散列算法 链表单位组成: 地址域, 数值域 代码构建 链表, 行为上和 map 一样  创建链表的包文件 1234package LinkNodesimport (&quot;fmt&quot;)var head *Nodevar curr *Node //">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-19T16:16:47.008Z">
+<meta property="og:updated_time" content="2018-05-31T14:58:57.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码学_链表的构成及Hash散列">
 <meta name="twitter:description" content="Hash散列原理(map的原理), 代码实现链表结构, 这也是go中map本质  map又名 hash表 优化后的数据结构 知识点:  数据结构的链表 hash散列算法 链表单位组成: 地址域, 数值域 代码构建 链表, 行为上和 map 一样  创建链表的包文件 1234package LinkNodesimport (&quot;fmt&quot;)var head *Nodevar curr *Node //">
@@ -395,7 +395,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-05-20 00:16:47" itemprop="dateModified" datetime="2018-05-20T00:16:47+08:00">2018-05-20</time>
+                <time title="Modified: 2018-05-31 22:58:57" itemprop="dateModified" datetime="2018-05-31T22:58:57+08:00">2018-05-31</time>
               
             
           </span>
@@ -503,7 +503,8 @@
 </li>
 </ul>
 <p>以上完成了一个 链表的 数据结构</p>
-<h2 id="哈希散列"><a href="#哈希散列" class="headerlink" title="哈希散列"></a>哈希散列</h2><p>现在我们创建一个装载链表的容器,  一个容量16的数组, 数据类型: Node </p>
+<p> <strong>哈希散列</strong></p>
+<p>现在我们创建一个装载链表的容器,  一个容量16的数组, 数据类型: Node </p>
 <p>并且我们将 node 节点的<code>data</code>字段从<code>string</code>优化为<code>struc</code>结构体. </p>
 <p>首先 我们有16个数组容量 分别是0-15</p>
 <p>将<code>HashCode</code>的功能就是将 <strong>平均分散</strong>任意的字符串转换为 <code>0~15</code> 的数值</p>
@@ -614,17 +615,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -779,22 +771,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希散列"><span class="nav-number">1.</span> <span class="nav-text">哈希散列</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
